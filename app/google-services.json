@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "555713495148",
+    "firebase_url": "https://teamis.firebaseio.com",
+    "project_id": "teamis",
+    "storage_bucket": "teamis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555713495148:android:712e3363712a83a892d849",
+        "android_client_info": {
+          "package_name": "com.proyecto.teamis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "555713495148-edp8nscpq9dc8be1sfpjjafiink1qsre.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.proyecto.teamis",
+            "certificate_hash": "98b863cb8351b4aba0980e1a331f0b8bbdb38e0a"
+          }
+        },
+        {
+          "client_id": "555713495148-so600h7i1b6ujv36s6uiu263pcvc30sq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.proyecto.teamis",
+            "certificate_hash": "e583fba037216ab3ca7030a0b79032ac799d7c78"
+          }
+        },
+        {
+          "client_id": "555713495148-td0q81i3jc3hfgdc24lncoiqr71nma99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6EwNRv1BHsX-EkIk6PXv-Q4Fcy_MSxWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "555713495148-td0q81i3jc3hfgdc24lncoiqr71nma99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555713495148:android:51a0308f14becd1c92d849",
+        "android_client_info": {
+          "package_name": "t2company.com.uy.teamis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "555713495148-ldueoarqiv24ssn1ert16oma5u9pa8gj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "t2company.com.uy.teamis",
+            "certificate_hash": "98b863cb8351b4aba0980e1a331f0b8bbdb38e0a"
+          }
+        },
+        {
+          "client_id": "555713495148-td0q81i3jc3hfgdc24lncoiqr71nma99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6EwNRv1BHsX-EkIk6PXv-Q4Fcy_MSxWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "555713495148-td0q81i3jc3hfgdc24lncoiqr71nma99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
