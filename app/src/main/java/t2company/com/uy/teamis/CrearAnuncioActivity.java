@@ -1,5 +1,6 @@
 package t2company.com.uy.teamis;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.text.DateFormat;
 
 public class CrearAnuncioActivity extends AppCompatActivity {
     DatabaseReference mRootReference;
@@ -72,19 +75,22 @@ public class CrearAnuncioActivity extends AppCompatActivity {
         String titulo = tituloo.getText().toString();
         String descripcion = descripcionn.getText().toString();
         String categoria= categoriaa.getSelectedItem().toString();
-        cargarDatosFirebase(titulo, descripcion, categoria);
+        Date fecha = new Date();
+        String fechaformato = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(fecha);
+        cargarDatosFirebase(titulo, descripcion, categoria,fechaformato);
 
     }
 
-    private void cargarDatosFirebase(String titulo, String descripcion, String categoria) {
+    private void cargarDatosFirebase( String titulo, String descripcion, String categoria, String fecha) {
         Map<String, Object> datosForo = new HashMap<>();
         datosForo.put("titulo",titulo);
         datosForo.put("descripcion",descripcion);
         datosForo.put("categoria",categoria);
+        datosForo.put("fecha",fecha);
 
 
         mRootReference.child("Foro").push().setValue(datosForo);
-//        startActivity(new Intent(getApplicationContext(), MisAnunciosActivity.class));
+      startActivity(new Intent(getApplicationContext(), MisAnunciosActivity.class));
     }
 
     public void onClickCancelar(View view) {
