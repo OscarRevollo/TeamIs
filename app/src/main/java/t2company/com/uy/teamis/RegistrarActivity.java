@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,10 +25,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class RegistrarActivity extends AppCompatActivity {
+public class RegistrarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText username,email,password;
     Button btn_register;
-
+    Spinner spinner;
+    String carreraItem;
     FirebaseAuth auth;
     private ProgressDialog mDialog;
     DatabaseReference reference;
@@ -33,6 +37,23 @@ public class RegistrarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
+        spinner = (Spinner) findViewById(R.id.spinner);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                R.layout.custom_spinner,
+                getResources().getStringArray(R.array.carrera)
+        );
+        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
+
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
+
+
+
+
 
         username = findViewById(R.id.username);
         email = findViewById(R.id.emailLogin);
@@ -62,7 +83,6 @@ public class RegistrarActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
     private void register(final String username, String email, String password){
 
@@ -81,6 +101,7 @@ public class RegistrarActivity extends AppCompatActivity {
                             hashMap.put("id",userid);
                             hashMap.put("username", username);
                             hashMap.put("imageUrl","default");
+                            hashMap.put("carrera",carreraItem);
                             hashMap.put("status","offline");
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -101,6 +122,18 @@ public class RegistrarActivity extends AppCompatActivity {
                         mDialog.dismiss();
                     }
                 });
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        carreraItem= parent.getItemAtPosition(position).toString();
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

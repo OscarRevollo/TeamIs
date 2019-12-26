@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TeamIs</string>
     <string name="text_category">Categorias</string>
+    <string-array name="carrera">
+        <item>Ing. Sistemas</item>
+        <item>Ing. Informática</item>
+    </string-array>
+
 </resources>
