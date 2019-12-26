@@ -1,11 +1,15 @@
-package t2company.com.uy.teamis;
+package t2company.com.uy.teamis.Fragments;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,24 +25,32 @@ import java.util.List;
 import t2company.com.uy.teamis.Adapter.UserAdapter;
 import t2company.com.uy.teamis.Model.Chat;
 import t2company.com.uy.teamis.Model.User;
+import t2company.com.uy.teamis.R;
 
-public class ChatActivity extends AppCompatActivity {
-    DatabaseReference reference;
+
+public class ChatsFragment extends Fragment {
+
+
     private RecyclerView recyclerView;
 
     private UserAdapter userAdapter;
     private List<User> mUsers;
     FirebaseUser fuser;
+    DatabaseReference reference;
     private List<String> userList;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
 
-        recyclerView=findViewById(R.id.recycler_view);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_chats,container,false);
+
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         fuser = FirebaseAuth.getInstance().getCurrentUser();
+
         userList = new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference("Chats");
         reference.addValueEventListener(new ValueEventListener() {
@@ -63,6 +75,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+        return view;
     }
 
     private void readChats(){
@@ -93,7 +106,7 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 }
 
-                userAdapter = new UserAdapter(ChatActivity.this,mUsers,true);
+                userAdapter = new UserAdapter(getContext(),mUsers,true);
                 recyclerView.setAdapter(userAdapter);
             }
 
@@ -103,5 +116,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
