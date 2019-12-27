@@ -1,0 +1,354 @@
+Index: app/src/main/java/t2company/com/uy/teamis/CrearAnuncioActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/t2company/com/uy/teamis/CrearAnuncioActivity.java	(revision f14cfd12b5ba9fa671bcfacddeea473e18db7bb2)
++++ app/src/main/java/t2company/com/uy/teamis/CrearAnuncioActivity.java	(date 1577330290177)
+@@ -1,5 +1,6 @@
+ package t2company.com.uy.teamis;
+ 
++import android.content.Intent;
+ import android.os.Bundle;
+ import android.util.Log;
+ import android.view.View;
+@@ -19,8 +20,10 @@
+ import com.google.firebase.database.FirebaseDatabase;
+ import com.google.firebase.database.ValueEventListener;
+ 
++import java.util.Date;
+ import java.util.HashMap;
+ import java.util.Map;
++import java.text.DateFormat;
+ 
+ public class CrearAnuncioActivity extends AppCompatActivity {
+     DatabaseReference mRootReference;
+@@ -72,19 +75,22 @@
+         String titulo = tituloo.getText().toString();
+         String descripcion = descripcionn.getText().toString();
+         String categoria= categoriaa.getSelectedItem().toString();
+-        cargarDatosFirebase(titulo, descripcion, categoria);
++        Date fecha = new Date();
++        String fechaformato = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(fecha);
++        cargarDatosFirebase(titulo, descripcion, categoria,fechaformato);
+ 
+     }
+ 
+-    private void cargarDatosFirebase(String titulo, String descripcion, String categoria) {
++    private void cargarDatosFirebase( String titulo, String descripcion, String categoria, String fecha) {
+         Map<String, Object> datosForo = new HashMap<>();
+         datosForo.put("titulo",titulo);
+         datosForo.put("descripcion",descripcion);
+         datosForo.put("categoria",categoria);
++        datosForo.put("fecha",fecha);
+ 
+ 
+         mRootReference.child("Foro").push().setValue(datosForo);
+-//        startActivity(new Intent(getApplicationContext(), MisAnunciosActivity.class));
++      startActivity(new Intent(getApplicationContext(), MisAnunciosActivity.class));
+     }
+ 
+     public void onClickCancelar(View view) {
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1577304230481)
++++ .idea/vcs.xml	(date 1577304230481)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_mis_anuncios.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_mis_anuncios.xml	(revision f14cfd12b5ba9fa671bcfacddeea473e18db7bb2)
++++ app/src/main/res/layout/activity_mis_anuncios.xml	(date 1577327772405)
+@@ -1,9 +1,275 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     tools:context=".MisAnunciosActivity">
+ 
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:orientation="vertical">
++        <RelativeLayout
++            android:layout_width="match_parent"
++            android:layout_height="25dp"
++            >
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_centerInParent="true"
++                android:fontFamily="sans-serif-condensed"
++                android:text="Escoge una tematica"
++                android:textColor="@android:color/black"
++                android:textSize="20sp">
++
++            </TextView>
++        </RelativeLayout>
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content">
++
++            <HorizontalScrollView
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content">
++                <LinearLayout
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:orientation="horizontal">
++                    <androidx.cardview.widget.CardView
++                        android:id="@+id/web_card_view"
++                        android:layout_width="100dp"
++                        android:layout_height="100dp"
++                        android:onClick="onClick">
++                        <RelativeLayout
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent">
++                            <de.hdodenhof.circleimageview.CircleImageView
++                                android:layout_width="42dp"
++                                android:layout_height="42dp"
++                                android:layout_centerInParent="true"
++                                android:src="@drawable/baseline_work_24"
++                                android:background="@color/colorPrimary">
++
++                            </de.hdodenhof.circleimageview.CircleImageView>
++
++
++                            <TextView
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:layout_alignParentBottom="true"
++                                android:layout_centerInParent="true"
++                                android:fontFamily="sans-serif-condensed"
++                                android:text="WEB"
++                                android:textColor="@android:color/black"
++                                android:textSize="20sp" />
++
++                        </RelativeLayout>
++
++                    </androidx.cardview.widget.CardView>
++                    <androidx.cardview.widget.CardView
++                        android:id="@+id/android_card_view"
++                        android:layout_width="100dp"
++                        android:layout_height="100dp"
++                        android:onClick="onClick">
++                        <RelativeLayout
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent">
++                            <de.hdodenhof.circleimageview.CircleImageView
++                                android:layout_width="42dp"
++                                android:layout_height="42dp"
++                                android:layout_centerInParent="true"
++                                android:src="@drawable/paisaje"
++                                app:cardCornerRadius="16dp">
++
++                            </de.hdodenhof.circleimageview.CircleImageView>
++
++
++                            <TextView
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:layout_alignParentBottom="true"
++                                android:layout_centerInParent="true"
++                                android:fontFamily="sans-serif-condensed"
++                                android:text="ANDROID"
++                                android:textColor="@android:color/black"
++                                android:textSize="20sp" />
++
++                        </RelativeLayout>
++
++                    </androidx.cardview.widget.CardView>
++                    <androidx.cardview.widget.CardView
++                        android:id="@+id/bd_card_view"
++                        android:layout_width="100dp"
++                        android:layout_height="100dp"
++                        android:onClick="onClick">>
++                        <RelativeLayout
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent">
++                            <de.hdodenhof.circleimageview.CircleImageView
++                                android:layout_width="42dp"
++                                android:layout_height="42dp"
++                                android:layout_centerInParent="true"
++                                android:src="@drawable/paisaje"
++                                app:cardCornerRadius="16dp">
++
++                            </de.hdodenhof.circleimageview.CircleImageView>
++
++
++                            <TextView
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:layout_alignParentBottom="true"
++                                android:layout_centerInParent="true"
++                                android:fontFamily="sans-serif-condensed"
++                                android:text="BD"
++                                android:textColor="@android:color/black"
++                                android:textSize="20sp" />
++
++                        </RelativeLayout>
++
++                    </androidx.cardview.widget.CardView>
++                    <androidx.cardview.widget.CardView
++                        android:id="@+id/desktop_card_view"
++                        android:layout_width="100dp"
++                        android:layout_height="100dp"
++                        android:onClick="onClick">>
++                        <RelativeLayout
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent">
++                            <de.hdodenhof.circleimageview.CircleImageView
++                                android:layout_width="42dp"
++                                android:layout_height="42dp"
++                                android:layout_centerInParent="true"
++                                android:src="@drawable/paisaje"
++                                app:cardCornerRadius="16dp">
++
++                            </de.hdodenhof.circleimageview.CircleImageView>
++
++
++                            <TextView
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:layout_alignParentBottom="true"
++                                android:layout_centerInParent="true"
++                                android:fontFamily="sans-serif-condensed"
++                                android:text="DESKTOP"
++                                android:textColor="@android:color/black"
++                                android:textSize="20sp" />
++
++                        </RelativeLayout>
++
++                    </androidx.cardview.widget.CardView>
++                    <androidx.cardview.widget.CardView
++                        android:id="@+id/otro_card_view"
++                        android:layout_width="100dp"
++                        android:layout_height="100dp"
++                        android:onClick="onClick">
++                        <RelativeLayout
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent">
++                            <de.hdodenhof.circleimageview.CircleImageView
++                                android:layout_width="42dp"
++                                android:layout_height="42dp"
++                                android:layout_centerInParent="true"
++                                android:src="@drawable/paisaje"
++                                app:cardCornerRadius="16dp">
++
++                            </de.hdodenhof.circleimageview.CircleImageView>
++
++
++                            <TextView
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:layout_alignParentBottom="true"
++                                android:layout_centerInParent="true"
++                                android:fontFamily="sans    -serif-condensed"
++                                android:text="OTRO"
++                                android:textColor="@android:color/black"
++                                android:textSize="20sp" />
++
++                        </RelativeLayout>
++
++                    </androidx.cardview.widget.CardView>
++                </LinearLayout>
++            </HorizontalScrollView>
++
++        </LinearLayout>
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent">
++
++
++            <ScrollView
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:orientation="vertical">
++
++                <androidx.cardview.widget.CardView
++                    android:id="@+id/foro_card_view"
++                    android:layout_width="match_parent"
++                    android:layout_height="120dp"
++                    android:layout_margin="8dp"
++                    android:backgroundTint="@color/colorCard"
++                    android:layout_marginTop="12dp"
++                    app:cardCornerRadius="8dp">
++
++
++                    <LinearLayout
++                        android:layout_width="match_parent"
++                        android:layout_height="match_parent"
++                        android:orientation="vertical"
++                        android:layout_margin="6dp">
++
++                        <TextView
++                            android:id="@+id/fecha"
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_centerInParent="true"
++                            android:fontFamily="sans-serif-condensed"
++                            android:text="Fecha: "
++                            android:textColor="@android:color/white"
++                            android:textSize="20sp" />
++
++                        <TextView
++                            android:id="@+id/Autor"
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_centerInParent="true"
++                            android:fontFamily="sans-serif-condensed"
++                            android:text="Autor: "
++                            android:textColor="@android:color/white"
++                            android:textSize="20sp" />
++                        <TextView
++                            android:id="@+id/titulo"
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_centerInParent="true"
++                            android:fontFamily="sans-serif-condensed"
++                            android:text="Titulo: "
++                            android:textColor="@android:color/white"
++                            android:textSize="20sp" />
++                        <TextView
++                            android:id="@+id/descripcion"
++                            android:layout_width="wrap_content"
++                            android:layout_height="wrap_content"
++                            android:layout_centerInParent="true"
++                            android:fontFamily="sans-serif-condensed"
++                            android:text="Descripcion: "
++                            android:textColor="@android:color/white"
++                            android:textSize="20sp" />
++
++
++
++                    </LinearLayout>
++
++
++                </androidx.cardview.widget.CardView>
++            </ScrollView>
++
++        </LinearLayout>
++
++
++    </LinearLayout>
++
++</RelativeLayout>
+\ No newline at end of file
