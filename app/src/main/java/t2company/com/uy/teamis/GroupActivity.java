@@ -22,9 +22,9 @@ public class GroupActivity extends AppCompatActivity {
 
 
     private void initViews() {
-        crear_grupo = findViewById(R.id.Crear_anuncio_card_view);
-        mis_grupos = findViewById(R.id.Mis_anuncios_card_view);
-        grupos = findViewById(R.id.anuncios_card_view);
+        crear_grupo = findViewById(R.id.Crear_grupo_card_view);
+        mis_grupos = findViewById(R.id.Mis_grupos_card_view);
+        grupos = findViewById(R.id.grupos_card_view);
 
         crear_grupo.setOnClickListener(new View.OnClickListener() {
             @Override

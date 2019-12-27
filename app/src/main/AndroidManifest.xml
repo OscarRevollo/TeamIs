@@ -64,15 +64,15 @@
             android:parentActivityName=".StartActivity" />
         <activity
             android:name=".CrearAnuncioActivity"
-            android:label="Crear Anuncios"
+            android:label="Crear Proyecto"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MisAnunciosActivity"
-            android:label="Mis Anuncios"
+            android:label="Mis Proyectos"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AnunciosActivity"
-            android:label="Anuncios"
+            android:label="Proyectos"
             android:screenOrientation="portrait" />
         <activity
             android:name=".CrearActividadActivity"
