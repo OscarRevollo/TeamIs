@@ -40,8 +40,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/web_card_view"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:onClick="onClick">
+                        android:layout_height="100dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -69,10 +68,9 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/android_card_view"
+                        android:id="@+id/movil_card_view"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:onClick="onClick">
+                        android:layout_height="100dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -92,7 +90,7 @@
                                 android:layout_alignParentBottom="true"
                                 android:layout_centerInParent="true"
                                 android:fontFamily="sans-serif-condensed"
-                                android:text="ANDROID"
+                                android:text="MOVIL"
                                 android:textColor="@android:color/black"
                                 android:textSize="20sp" />
 
@@ -102,8 +100,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/bd_card_view"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:onClick="onClick">>
+                        android:layout_height="100dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -131,10 +128,9 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/desktop_card_view"
+                        android:id="@+id/gamers_card_view"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:onClick="onClick">>
+                        android:layout_height="100dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -154,7 +150,67 @@
                                 android:layout_alignParentBottom="true"
                                 android:layout_centerInParent="true"
                                 android:fontFamily="sans-serif-condensed"
-                                android:text="DESKTOP"
+                                android:text="GAMERS"
+                                android:textColor="@android:color/black"
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/redes_card_view"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/paisaje"
+                                app:cardCornerRadius="16dp">
+
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="sans    -serif-condensed"
+                                android:text="REDES"
+                                android:textColor="@android:color/black"
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/ia_card_view"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/paisaje"
+                                app:cardCornerRadius="16dp">
+
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="sans    -serif-condensed"
+                                android:text="IA"
                                 android:textColor="@android:color/black"
                                 android:textSize="20sp" />
 
@@ -164,8 +220,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/otro_card_view"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:onClick="onClick">
+                        android:layout_height="100dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">

@@ -24,11 +24,12 @@ public class ForoAdapter extends RecyclerView.Adapter<ForoAdapter.ViewHolder> {
 
     public class ViewHolder extends  RecyclerView.ViewHolder{
 //        public TextView mTextView;
-        TextView textViewFecha,textViewtitulo,textViewAutor,textViewDescripcion;
+        TextView textViewFecha,textViewtitulo,textViewAutor,textViewDescripcion,textViewCategoria;
 
         public ViewHolder(View itemView){
             super(itemView);
             textViewFecha=(TextView) itemView.findViewById(R.id.fecha);
+            textViewCategoria=(TextView)itemView.findViewById(R.id.categoria);
             textViewAutor=(TextView) itemView.findViewById(R.id.Autor);
             textViewtitulo=(TextView) itemView.findViewById(R.id.titulo);
             textViewDescripcion=(TextView) itemView.findViewById(R.id.descripcion);
@@ -57,9 +58,10 @@ public class ForoAdapter extends RecyclerView.Adapter<ForoAdapter.ViewHolder> {
 
         Foro foro = foroList.get(position);
         holder.textViewFecha.setText("Fecha: "+ foro.getFecha());
-        holder.textViewAutor.setText(foro.getCategoria());
-        holder.textViewtitulo.setText(foro.getTitulo());
-        holder.textViewDescripcion.setText(foro.getDescripcion());
+        holder.textViewCategoria.setText("Categoria:" + foro.getCategoria());
+        holder.textViewAutor.setText("Autor: "+foro.getAutor());
+        holder.textViewtitulo.setText("Titulo: "+foro.getTitulo());
+        holder.textViewDescripcion.setText("Descripcion: "+foro.getDescripcion());
 //        holder.textView.setText(mDataset[position]);
 
     }

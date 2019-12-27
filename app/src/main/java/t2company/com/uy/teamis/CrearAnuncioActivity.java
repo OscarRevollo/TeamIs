@@ -12,8 +12,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.text.DateFormat;
 
+import t2company.com.uy.teamis.modelos.User;
+
 public class CrearAnuncioActivity extends AppCompatActivity {
     DatabaseReference mRootReference;
     TextView estado;
@@ -33,6 +38,9 @@ public class CrearAnuncioActivity extends AppCompatActivity {
     Spinner categoriaa;
     Button btnRegistrar;
     Button btnCancelar;
+    FirebaseUser fuser;
+    DatabaseReference referenceActualU;
+    String autorA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +52,10 @@ public class CrearAnuncioActivity extends AppCompatActivity {
         tituloo = findViewById(R.id.editTitulo);
         descripcionn = findViewById(R.id.editDescripcion);
         categoriaa=(Spinner) findViewById(R.id.spinnerCrear);
-
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+        referenceActualU = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
         mRootReference = FirebaseDatabase.getInstance().getReference();
+        //Categoria
         ArrayAdapter<CharSequence>
                 adapter = ArrayAdapter.createFromResource(this, R.array.Categoria, android.R.layout.simple_spinner_item);
         categoriaa.setAdapter(adapter);
@@ -64,6 +74,21 @@ public class CrearAnuncioActivity extends AppCompatActivity {
 
 
         });
+        //Actual usuario
+        referenceActualU.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user =dataSnapshot.getValue(User.class);
+                autorA= user.getUsername();
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 
@@ -77,16 +102,18 @@ public class CrearAnuncioActivity extends AppCompatActivity {
         String categoria= categoriaa.getSelectedItem().toString();
         Date fecha = new Date();
         String fechaformato = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(fecha);
-        cargarDatosFirebase(titulo, descripcion, categoria,fechaformato);
+        String autor= autorA;
+        cargarDatosFirebase(titulo, descripcion, categoria,fechaformato,autor);
 
     }
 
-    private void cargarDatosFirebase( String titulo, String descripcion, String categoria, String fecha) {
+    private void cargarDatosFirebase( String titulo, String descripcion, String categoria, String fecha,String autor) {
         Map<String, Object> datosForo = new HashMap<>();
         datosForo.put("titulo",titulo);
         datosForo.put("descripcion",descripcion);
         datosForo.put("categoria",categoria);
         datosForo.put("fecha",fecha);
+        datosForo.put("autor",autor);
 
 
         mRootReference.child("Foro").push().setValue(datosForo);

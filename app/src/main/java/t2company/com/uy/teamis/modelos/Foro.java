@@ -6,6 +6,7 @@ public class Foro {
     private String descripcion;
     private String categoria;
     private String fecha;
+    private String autor;
 
     public Foro (String titulo,String descripcion,String categoria,String fecha){
         this.titulo=titulo;
@@ -48,5 +49,11 @@ public class Foro {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+    public String getAutor() {
+        return autor;
+    }
 
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
 }
