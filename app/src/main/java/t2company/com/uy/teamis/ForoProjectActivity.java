@@ -92,8 +92,6 @@ public class ForoProjectActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user =dataSnapshot.getValue(User.class);
                 autorA= user.getUsername();
-
-
             }
 
             @Override
