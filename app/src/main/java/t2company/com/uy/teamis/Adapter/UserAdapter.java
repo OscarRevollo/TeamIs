@@ -19,11 +19,9 @@ import t2company.com.uy.teamis.R;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
     private Context mContext;
     private List<User> mUsers;
-    private boolean ischat;
-    public UserAdapter(Context mContext, List<User> mUsers, boolean ischat){
+    public UserAdapter(Context mContext, List<User> mUsers){
         this.mContext=mContext;
         this.mUsers=mUsers;
-        this.ischat=ischat;
     }
 
     @NonNull
@@ -37,7 +35,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final User user =mUsers.get(position);
-        holder.username.setText(user.getUsername());
+        holder.username.setText(user.getEmail());
         if(user.getImageURL().equals("default")){
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
 
@@ -45,20 +43,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
             Glide.with(mContext).load(user.getImageURL()).into(holder.profile_image);
 
         }
-
-        if (ischat){
-            if (user.getStatus().equals("online")){
-                holder.img_on.setVisibility(View.VISIBLE);
-                holder.img_off.setVisibility(View.GONE);
-            }else {
-                holder.img_off.setVisibility(View.VISIBLE);
-                holder.img_on.setVisibility(View.GONE);
-            }
-        }else{
-            holder.img_on.setVisibility(View.GONE);
-            holder.img_off.setVisibility(View.GONE);
-        }
-
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

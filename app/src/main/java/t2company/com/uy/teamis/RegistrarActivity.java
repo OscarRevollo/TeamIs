@@ -84,7 +84,7 @@ public class RegistrarActivity extends AppCompatActivity implements AdapterView.
             }
         });
     }
-    private void register(final String username, String email, String password){
+    private void register(final String username, final String email, String password){
 
         auth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>(){
@@ -99,6 +99,7 @@ public class RegistrarActivity extends AppCompatActivity implements AdapterView.
 
                             HashMap<String,String> hashMap = new HashMap<>();
                             hashMap.put("id",userid);
+                            hashMap.put("email",email);
                             hashMap.put("username", username);
                             hashMap.put("imageUrl","default");
                             hashMap.put("carrera",carreraItem);

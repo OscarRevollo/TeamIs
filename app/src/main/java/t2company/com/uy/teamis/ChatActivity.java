@@ -81,10 +81,8 @@ public class ChatActivity extends AppCompatActivity {
                     for (String id : userList){
                         if (user.getId().equals(id)){
                             if (mUsers.size()!= 0 ){
-                                for (User user1 : mUsers){
-                                    if (!user.getId().equals(user1.getId())){
-                                        mUsers.add(user);
-                                    }
+                                if(!exist(user,mUsers)){
+                                    mUsers.add(user);
                                 }
                             }else {
                                 mUsers.add(user);
@@ -93,7 +91,7 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 }
 
-                userAdapter = new UserAdapter(ChatActivity.this,mUsers,true);
+                userAdapter = new UserAdapter(ChatActivity.this,mUsers);
                 recyclerView.setAdapter(userAdapter);
             }
 
@@ -102,6 +100,17 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private boolean exist(User user,List<User> mUsers){
+        boolean resp=false;
+            for (User user1 : mUsers){
+                if (user.getId().equals(user1.getId())){
+                    resp=true;
+                }
+
+            }
+
+        return resp;
     }
 
 }

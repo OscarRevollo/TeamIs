@@ -2,7 +2,6 @@ package t2company.com.uy.teamis;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -63,7 +62,7 @@ public class UserActivity extends AppCompatActivity {
                         mUsers.add(user);
                     }
                 }
-                userAdapter = new UserAdapter(UserActivity.this, mUsers, false);
+                userAdapter = new UserAdapter(UserActivity.this, mUsers);
                 recyclerView.setAdapter(userAdapter);
 
             }
