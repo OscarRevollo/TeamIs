@@ -53,7 +53,7 @@ public class CrearAnuncioActivity extends AppCompatActivity {
         categoriaa=(Spinner) findViewById(R.id.spinnerCrear);
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         referenceActualU = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
-        mRootReference = FirebaseDatabase.getInstance().getReference();
+
         //Categoria
         ArrayAdapter<CharSequence>
                 adapter = ArrayAdapter.createFromResource(this, R.array.Categoria, android.R.layout.simple_spinner_item);

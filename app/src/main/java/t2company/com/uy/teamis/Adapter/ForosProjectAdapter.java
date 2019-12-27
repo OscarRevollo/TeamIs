@@ -1,5 +1,6 @@
 package t2company.com.uy.teamis.Adapter;
 
+
 import android.content.Intent;
 import android.os.Parcelable;
 import android.util.Log;
@@ -18,13 +19,13 @@ import t2company.com.uy.teamis.ForoProjectActivity;
 import t2company.com.uy.teamis.R;
 import t2company.com.uy.teamis.Model.Foro;
 
-public class ForoProjectAdapter extends RecyclerView.Adapter<ForoProjectAdapter.ViewHolder> {
-   // private String[] mDataset;
+public class ForosProjectAdapter extends RecyclerView.Adapter<ForosProjectAdapter.ViewHolder> {
+    // private String[] mDataset;
 //    private Context mCtx;
     private List <Foro> foroList;
 
     public class ViewHolder extends  RecyclerView.ViewHolder{
-//        public TextView mTextView;
+        //        public TextView mTextView;
         TextView textViewFecha,textViewtitulo,textViewAutor,textViewDescripcion,textViewCategoria;
         LinearLayout parentLayout;
 
@@ -40,14 +41,14 @@ public class ForoProjectAdapter extends RecyclerView.Adapter<ForoProjectAdapter.
 
     }
 
-    public ForoProjectAdapter(List<Foro> foro){
+    public ForosProjectAdapter(List<Foro> foro){
 
         this.foroList=foro;
     }
 
-     @Override
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+                                         int viewType) {
         // create a new view
 
         View view =LayoutInflater.from(parent.getContext()).inflate(R.layout.foro_item,parent,false);
@@ -59,7 +60,7 @@ public class ForoProjectAdapter extends RecyclerView.Adapter<ForoProjectAdapter.
     @Override
     public void onBindViewHolder( ViewHolder holder, final int position) {
 
-         final Foro foro = foroList.get(position);
+        final Foro foro = foroList.get(position);
         holder.textViewFecha.setText("Fecha: "+ foro.getFecha());
         holder.textViewCategoria.setText("Categoria:" + foro.getCategoria());
         holder.textViewAutor.setText("Autor: "+foro.getAutor());
@@ -72,6 +73,10 @@ public class ForoProjectAdapter extends RecyclerView.Adapter<ForoProjectAdapter.
                 Intent intent = new Intent(view.getContext(), ForoProjectActivity.class);
                 intent.putExtra("titulo", foro.getTitulo());
                 intent.putExtra("descripcion",foro.getDescripcion());
+                intent.putExtra("fecha",foro.getFecha());
+                intent.putExtra("autor",foro.getAutor());
+                intent.putExtra("categoria",foro.getCategoria());
+
 
                 view.getContext().startActivity(intent);
             }
