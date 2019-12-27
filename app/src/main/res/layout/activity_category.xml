@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="Reclamos"
+                    android:text="Informaciones"
                     android:textColor="@android:color/white"
                     android:textSize="32sp" />
 
