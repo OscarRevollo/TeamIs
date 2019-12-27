@@ -1,4 +1,4 @@
-package t2company.com.uy.teamis.modelos;
+package t2company.com.uy.teamis.Model;
 
 public class Foro {
 

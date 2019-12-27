@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TeamIs</string>
     <string name="text_category">Categorias</string>
+    <string name="title_activity_foro">ForoActivity</string>
 </resources>

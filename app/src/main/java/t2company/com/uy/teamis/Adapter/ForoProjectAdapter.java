@@ -1,23 +1,24 @@
 package t2company.com.uy.teamis.Adapter;
 
-import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
+import t2company.com.uy.teamis.ForoProjectActivity;
 import t2company.com.uy.teamis.R;
-import t2company.com.uy.teamis.modelos.Foro;
+import t2company.com.uy.teamis.Model.Foro;
 
-public class ForoAdapter extends RecyclerView.Adapter<ForoAdapter.ViewHolder> {
+public class ForoProjectAdapter extends RecyclerView.Adapter<ForoProjectAdapter.ViewHolder> {
    // private String[] mDataset;
 //    private Context mCtx;
     private List <Foro> foroList;
@@ -25,6 +26,7 @@ public class ForoAdapter extends RecyclerView.Adapter<ForoAdapter.ViewHolder> {
     public class ViewHolder extends  RecyclerView.ViewHolder{
 //        public TextView mTextView;
         TextView textViewFecha,textViewtitulo,textViewAutor,textViewDescripcion,textViewCategoria;
+        LinearLayout parentLayout;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -33,11 +35,12 @@ public class ForoAdapter extends RecyclerView.Adapter<ForoAdapter.ViewHolder> {
             textViewAutor=(TextView) itemView.findViewById(R.id.Autor);
             textViewtitulo=(TextView) itemView.findViewById(R.id.titulo);
             textViewDescripcion=(TextView) itemView.findViewById(R.id.descripcion);
+            parentLayout = itemView.findViewById(R.id.parent_layout);
         }
 
     }
 
-    public ForoAdapter( List<Foro> foro){
+    public ForoProjectAdapter(List<Foro> foro){
 
         this.foroList=foro;
     }
@@ -54,14 +57,25 @@ public class ForoAdapter extends RecyclerView.Adapter<ForoAdapter.ViewHolder> {
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder( ViewHolder holder, final int position) {
 
-        Foro foro = foroList.get(position);
+         final Foro foro = foroList.get(position);
         holder.textViewFecha.setText("Fecha: "+ foro.getFecha());
         holder.textViewCategoria.setText("Categoria:" + foro.getCategoria());
         holder.textViewAutor.setText("Autor: "+foro.getAutor());
         holder.textViewtitulo.setText("Titulo: "+foro.getTitulo());
         holder.textViewDescripcion.setText("Descripcion: "+foro.getDescripcion());
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), ForoProjectActivity.class);
+                intent.putExtra("titulo", foro.getTitulo());
+                intent.putExtra("descripcion",foro.getDescripcion());
+
+                view.getContext().startActivity(intent);
+            }
+        });
 //        holder.textView.setText(mDataset[position]);
 
     }

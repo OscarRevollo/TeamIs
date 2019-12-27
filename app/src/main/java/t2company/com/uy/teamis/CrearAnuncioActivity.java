@@ -2,7 +2,6 @@ package t2company.com.uy.teamis;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.text.DateFormat;
 
-import t2company.com.uy.teamis.modelos.User;
+import t2company.com.uy.teamis.Model.User;
 
 public class CrearAnuncioActivity extends AppCompatActivity {
     DatabaseReference mRootReference;

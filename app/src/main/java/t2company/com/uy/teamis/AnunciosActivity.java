@@ -6,12 +6,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,8 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import t2company.com.uy.teamis.Adapter.ForoAdapter;
-import t2company.com.uy.teamis.modelos.Foro;
+import t2company.com.uy.teamis.Adapter.ForoProjectAdapter;
+import t2company.com.uy.teamis.Model.Foro;
 
 public class AnunciosActivity extends AppCompatActivity {
 
@@ -37,7 +33,7 @@ public class AnunciosActivity extends AppCompatActivity {
     CardView ia;
     CardView gamers;
     CardView otro;
-    ForoAdapter foroAdapter;
+    ForoProjectAdapter foroProjectAdapter;
     List<Foro> foroList;
     RecyclerView recyclerView;
     FirebaseUser fuser;
@@ -58,8 +54,8 @@ public class AnunciosActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(AnunciosActivity.this));
         foroList= new ArrayList<>();
-        foroAdapter =new ForoAdapter(foroList);
-        recyclerView.setAdapter(foroAdapter);
+        foroProjectAdapter =new ForoProjectAdapter(foroList);
+        recyclerView.setAdapter(foroProjectAdapter);
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         nDatabase = FirebaseDatabase.getInstance().getReference();
@@ -76,7 +72,7 @@ public class AnunciosActivity extends AppCompatActivity {
                                                    Foro foro = datasnapshot.getValue(Foro.class);
                                                    foroList.add(foro);
                                                }
-                                               foroAdapter.notifyDataSetChanged();
+                                               foroProjectAdapter.notifyDataSetChanged();
                                            }
 
                                            @Override
@@ -99,7 +95,7 @@ public class AnunciosActivity extends AppCompatActivity {
                             Foro foro = datasnapshot.getValue(Foro.class);
                             foroList.add(foro);
                         }
-                        foroAdapter.notifyDataSetChanged();
+                        foroProjectAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -122,7 +118,7 @@ public class AnunciosActivity extends AppCompatActivity {
                             Foro foro = datasnapshot.getValue(Foro.class);
                             foroList.add(foro);
                         }
-                        foroAdapter.notifyDataSetChanged();
+                        foroProjectAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -145,7 +141,7 @@ public class AnunciosActivity extends AppCompatActivity {
                             Foro foro = datasnapshot.getValue(Foro.class);
                             foroList.add(foro);
                         }
-                        foroAdapter.notifyDataSetChanged();
+                        foroProjectAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -168,7 +164,7 @@ public class AnunciosActivity extends AppCompatActivity {
                             Foro foro = datasnapshot.getValue(Foro.class);
                             foroList.add(foro);
                         }
-                        foroAdapter.notifyDataSetChanged();
+                        foroProjectAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -191,7 +187,7 @@ public class AnunciosActivity extends AppCompatActivity {
                             Foro foro = datasnapshot.getValue(Foro.class);
                             foroList.add(foro);
                         }
-                        foroAdapter.notifyDataSetChanged();
+                        foroProjectAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -214,7 +210,7 @@ public class AnunciosActivity extends AppCompatActivity {
                             Foro foro = datasnapshot.getValue(Foro.class);
                             foroList.add(foro);
                         }
-                        foroAdapter.notifyDataSetChanged();
+                        foroProjectAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -237,7 +233,7 @@ public class AnunciosActivity extends AppCompatActivity {
 //                    Foro foro = datasnapshot.getValue(Foro.class);
 //                    foroList.add(foro);
 //                }
-//                foroAdapter.notifyDataSetChanged();
+//                foroProjectAdapter.notifyDataSetChanged();
 //
 //            }
 //
