@@ -74,11 +74,12 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
+                                android:layout_width="59dp"
+                                android:layout_height="64dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:src="@drawable/android"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
@@ -104,15 +105,19 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
-                                app:cardCornerRadius="16dp">
+                                android:layout_width="62dp"
+                                android:layout_height="70dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_marginBottom="15dp"
+                                android:src="@drawable/database"
+                                app:cardCornerRadius="0dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
-
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -134,15 +139,19 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:layout_width="88dp"
+                                android:layout_height="65dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="13dp"
+                                android:layout_marginEnd="0dp"
+                                android:src="@drawable/gamers"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
-
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -164,11 +173,12 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
+                                android:layout_width="55dp"
+                                android:layout_height="67dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:src="@drawable/redes"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
@@ -194,11 +204,12 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
+                                android:layout_width="59dp"
+                                android:layout_height="60dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:src="@drawable/ia"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
@@ -224,11 +235,12 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
+                                android:layout_width="44dp"
+                                android:layout_height="71dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:src="@drawable/otros"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>

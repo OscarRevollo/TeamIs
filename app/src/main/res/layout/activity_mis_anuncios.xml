@@ -76,7 +76,7 @@
                                 android:layout_width="42dp"
                                 android:layout_height="42dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:src="@drawable/android"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
@@ -106,7 +106,7 @@
                                 android:layout_width="42dp"
                                 android:layout_height="42dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:src="@drawable/database"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
@@ -136,7 +136,7 @@
                                 android:layout_width="42dp"
                                 android:layout_height="42dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:src="@drawable/des"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
@@ -166,7 +166,7 @@
                                 android:layout_width="42dp"
                                 android:layout_height="42dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/paisaje"
+                                android:src="@drawable/otros"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
