@@ -26,13 +26,13 @@ public class ActivitiesActivity extends AppCompatActivity {
         crear_actividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),CrearActividadActivity.class));
+                startActivity(new Intent(getApplicationContext(),Crear_ActividadActivity.class));
             }
         });
         mis_actividades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MisActividadesActivity.class));
+                startActivity(new Intent(getApplicationContext(),Mis_ActividadesActivity.class));
             }
         });
         actividades.setOnClickListener(new View.OnClickListener() {

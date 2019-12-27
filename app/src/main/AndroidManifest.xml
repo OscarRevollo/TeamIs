@@ -9,10 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ActividadesActivity"
+            android:label="Actividades"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Mis_ActividadesActivity"
+            android:label="Mis Actividades"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Crear_ActividadActivity"
+            android:label="Crear Actividad"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ForoProjectActivity"
             android:label="@string/title_activity_foro"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ResetPasswordActivity" /> <!-- <activity android:name=".AnunciosActivity"></activity> -->
         <!-- <activity android:name=".MisAnunciosActivity" /> -->
         <!-- <activity android:name=".CrearAnuncioActivity" /> -->
@@ -64,27 +73,15 @@
             android:parentActivityName=".StartActivity" />
         <activity
             android:name=".CrearAnuncioActivity"
-            android:label="Crear Anuncios"
+            android:label="Crear Proyecto"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MisAnunciosActivity"
-            android:label="Mis Anuncios"
+            android:label="Mis Proyectos"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AnunciosActivity"
-            android:label="Anuncios"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".CrearActividadActivity"
-            android:label="Crear Actividades"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MisActividadesActivity"
-            android:label="Mis Actividades"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ActividadesActivity"
-            android:label="Actividades"
+            android:label="Proyectos"
             android:screenOrientation="portrait" />
         <activity
             android:name=".CrearGrupoActivity"

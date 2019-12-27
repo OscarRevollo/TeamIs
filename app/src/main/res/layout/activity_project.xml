@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="Crear Anuncio"
+                    android:text="Crear Proyecto"
                     android:textColor="@android:color/white"
                     android:textSize="32sp" />
 
@@ -72,9 +72,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="39dp"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="Mis anuncios"
+                    android:text="Mis proyectos"
                     android:textColor="@android:color/white"
                     android:textSize="32sp" />
 
@@ -106,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="Anuncios"
+                    android:text="Proyectos"
                     android:textColor="@android:color/white"
                     android:textSize="32sp" />
 

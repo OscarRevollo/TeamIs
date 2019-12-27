@@ -1,5 +1,9 @@
 package t2company.com.uy.teamis;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +15,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,14 +23,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.text.DateFormat;
 
 import t2company.com.uy.teamis.Model.User;
 
-public class CrearAnuncioActivity extends AppCompatActivity {
+public class Crear_ActividadActivity extends AppCompatActivity {
     DatabaseReference mRootReference;
     TextView estado;
     EditText tituloo;
@@ -40,11 +41,10 @@ public class CrearAnuncioActivity extends AppCompatActivity {
     FirebaseUser fuser;
     DatabaseReference referenceActualU;
     String autorA;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crear_anuncio);
+        setContentView(R.layout.activity_crear__actividad);
         mRootReference = FirebaseDatabase.getInstance().getReference();
         btnRegistrar= findViewById(R.id.buttonRegistrar);
         btnCancelar= findViewById(R.id.buttonCancelar);
@@ -90,10 +90,7 @@ public class CrearAnuncioActivity extends AppCompatActivity {
         });
 
 
-
-
     }
-
     public void onClick(View v){
 
         String titulo = tituloo.getText().toString();
@@ -115,8 +112,8 @@ public class CrearAnuncioActivity extends AppCompatActivity {
         datosForo.put("autor",autor);
 
 
-        mRootReference.child("Foro").push().setValue(datosForo);
-      startActivity(new Intent(getApplicationContext(), AnunciosActivity.class));
+        mRootReference.child("ForoActividad").push().setValue(datosForo);
+        startActivity(new Intent(getApplicationContext(), ActividadesActivity.class));
     }
 
     public void onClickCancelar(View view) {
