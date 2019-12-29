@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -91,7 +92,7 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 }
 
-                userAdapter = new UserAdapter(ChatActivity.this,mUsers);
+                userAdapter = new UserAdapter(ChatActivity.this,ordenar(mUsers,userList));
                 recyclerView.setAdapter(userAdapter);
             }
 
@@ -101,14 +102,28 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+    private List<User> ordenar(List<User> mUsers, List<String> userList){
+        List<User> ordenado=new ArrayList<>();
+        for(int i=userList.size()-1;i>-1;i--){
+            for (User user1 : mUsers){
+                if (!exist(user1,ordenado)) {
+                    if (userList.get(i).equals(user1.getId())) {
+                        ordenado.add(user1);
+                    }
+                }
+            }
+
+        }
+        return ordenado;
+    }
     private boolean exist(User user,List<User> mUsers){
         boolean resp=false;
-            for (User user1 : mUsers){
-                if (user.getId().equals(user1.getId())){
-                    resp=true;
-                }
-
+        for (User user1 : mUsers){
+            if (user.getId().equals(user1.getId())){
+                resp=true;
             }
+
+        }
 
         return resp;
     }
