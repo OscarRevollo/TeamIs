@@ -1,15 +1,11 @@
 package t2company.com.uy.teamis;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,32 +16,23 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import t2company.com.uy.teamis.Adapter.ComentarioProAdapter;
-import t2company.com.uy.teamis.Adapter.ForosProjectAdapter;
 import t2company.com.uy.teamis.Model.Comentario;
-import t2company.com.uy.teamis.Model.Foro;
 import t2company.com.uy.teamis.Model.User;
-import t2company.com.uy.teamis.R;
 
 public class ForoProjectActivity extends AppCompatActivity {
     Dialog myDialog;
@@ -68,7 +55,8 @@ public class ForoProjectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_foro);
         myDialog = new Dialog(this);
         recyclerView=findViewById(R.id.recycler_viewComent);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setNestedScrollingEnabled(false);
+
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -141,18 +129,22 @@ public class ForoProjectActivity extends AppCompatActivity {
     }
 
     private void readComentario() {
+
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Comentario");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                comentarioList.removeAll(comentarioList);
-                for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
-                    Comentario comentario = datasnapshot.getValue(Comentario.class);
-                    comentarioList.add(comentario);
+
+                comentarioList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Comentario comentario = snapshot.getValue(Comentario.class);
+                    assert comentario != null;
+                        comentarioList.add(comentario);
                 }
-                comentarioProAdapter.notifyDataSetChanged();
+                comentarioProAdapter = new ComentarioProAdapter(ForoProjectActivity.this, comentarioList);
+                recyclerView.setAdapter(comentarioProAdapter);
             }
 
             @Override

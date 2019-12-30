@@ -1,82 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/parent_layout">
-    <androidx.cardview.widget.CardView
         android:id="@+id/foro_card_view"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:backgroundTint="#5CC7CC"
+        android:backgroundTint="#2196F3"
         app:cardCornerRadius="8dp">
-        //#5CC7CC color fondo #6DC7A6
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:orientation="vertical">
+        <RelativeLayout
             android:orientation="vertical"
-            android:layout_margin="15dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="Responder a : usuario "
-                android:textSize="15dp"
-                android:id="@+id/autor_or">
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            </TextView>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/profile_image"
+                android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="username"
+                android:textColor="@color/white"
+                android:id="@+id/autor_or"
+                android:layout_toRightOf="@+id/profile_image"
+                android:layout_toEndOf="@+id/profile_image"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                app:civ_border_width="10dp"
+                app:civ_border_color="#05df29"
+                android:id="@+id/img_on"
+                android:visibility="gone"
+                android:src="@mipmap/ic_launcher"
+                android:layout_below="@+id/username"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-15dp"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_margin="0dp"
+            android:background="@android:color/darker_gray" />
+
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
+                android:textColor="@color/white"
                 android:text="Re: Titulo"
                 android:textSize="15dp"
                 android:id="@+id/titulo">
-
             </TextView>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
+                android:textColor="@color/white"
                 android:text="De: usuario"
                 android:textSize="15dp"
                 android:id="@+id/emisor">
-
             </TextView>
 
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/comentario"
                 android:layout_width="match_parent"
-                android:padding="5dp"
-                android:id="@+id/bottom"
-                android:background="#fff"
-                android:layout_alignParentBottom="true"
-                android:layout_height="130dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/comentario"
-                    android:background="@android:color/transparent"
-                    android:hint="Escriba un comentario"
-                    android:layout_toLeftOf="@+id/btn_send"
-                    android:scrollbars="vertical"
-                    />
-                <Button
-                    android:id="@+id/buttonResp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="2dp"
-                    android:text="Responder"
-                    android:onClick="ShowPopup"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:scrollbars="vertical" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/buttonResp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shapelogin"
+                android:onClick="ShowPopup"
+                android:padding="15dp"
+                android:layout_alignParentRight="true"
+                android:shadowColor="@android:color/transparent"
+                android:text="Responder" />
 
-            </RelativeLayout>
+        </RelativeLayout>
 
+    </LinearLayout>
 
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
