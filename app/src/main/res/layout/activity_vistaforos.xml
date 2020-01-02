@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ForosActivity">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="3"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿olvidaste tu contraseña?"
+                    android:drawableLeft="@drawable/ic_lock_open_black_24dp"
+                    android:shadowColor="@android:color/transparent"
+                    android:padding="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/shapesignup"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:id="@+id/crear_foro"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿olvidaste tu contraseña?"
+                    android:drawableLeft="@drawable/ic_lock_open_black_24dp"
+                    android:shadowColor="@android:color/transparent"
+                    android:padding="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/shapesignup"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:id="@+id/mis_foros"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿olvidaste tu contraseña?"
+                    android:drawableLeft="@drawable/ic_lock_open_black_24dp"
+                    android:shadowColor="@android:color/transparent"
+                    android:padding="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/shapesignup"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:id="@+id/foros"/>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+</LinearLayout>

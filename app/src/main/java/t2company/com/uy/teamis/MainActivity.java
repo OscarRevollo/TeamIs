@@ -15,7 +15,10 @@ public class MainActivity extends AppCompatActivity {
 
     CardView chat;
     CardView users;
-    CardView category;
+    CardView informaciones;
+    CardView foros;
+    CardView eventos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         chat = findViewById(R.id.chat_card_view);
         users = findViewById(R.id.user_card_view);
-        category = findViewById(R.id.category_card_view);
+        informaciones = findViewById(R.id.informaciones_card_view);
+        foros = findViewById(R.id.foros_card_view);
+        eventos = findViewById(R.id.eventos_card_view);
+
 
 
         chat.setOnClickListener(new View.OnClickListener() {
@@ -52,11 +58,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        category.setOnClickListener(new View.OnClickListener() {
+        informaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent i = new Intent(getApplicationContext(), CategoryActivity.class);
+
+                startActivity(i);
+            }
+        });
+        foros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getApplicationContext(), ForosActivity.class);
+
+                startActivity(i);
+            }
+        });
+        eventos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getApplicationContext(),EventosActivity.class);
 
                 startActivity(i);
             }
