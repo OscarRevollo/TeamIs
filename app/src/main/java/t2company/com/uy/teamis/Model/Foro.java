@@ -8,13 +8,13 @@ public class Foro {
     private String fecha;
     private String autor;
 
-    public Foro (String titulo,String descripcion,String categoria,String fecha){
-        this.titulo=titulo;
-        this.descripcion=descripcion;
-        this.categoria=categoria;
-        this.fecha=fecha;
+    public Foro(String titulo, String descripcion, String categoria, String fecha, String autor) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.fecha = fecha;
+        this.autor = autor;
     }
-
     public Foro() {
     }
 

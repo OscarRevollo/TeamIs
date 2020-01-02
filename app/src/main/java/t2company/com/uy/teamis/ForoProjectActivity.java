@@ -31,10 +31,13 @@ import java.util.List;
 import java.util.Map;
 
 import t2company.com.uy.teamis.Adapter.ComentarioProAdapter;
+import t2company.com.uy.teamis.Adapter.ExpandableComentarioAdapter;
 import t2company.com.uy.teamis.Model.Comentario;
 import t2company.com.uy.teamis.Model.User;
 
 public class ForoProjectActivity extends AppCompatActivity {
+
+    RecyclerView expanderRecyclerView;
     Dialog myDialog;
     DatabaseReference mRootReference;
     List<Comentario> comentarioList;
@@ -49,111 +52,204 @@ public class ForoProjectActivity extends AppCompatActivity {
     FirebaseUser fuser;
     String autorA;
     DatabaseReference referenceActualU;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_foro);
-        myDialog = new Dialog(this);
-        recyclerView=findViewById(R.id.recycler_viewComent);
-        recyclerView.setNestedScrollingEnabled(false);
 
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        getIncomingIntent();
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
-        referenceActualU = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+        expanderRecyclerView = findViewById(R.id.recycler_viewComent);
+
+        initiateExpander();
+
+    }
 
 
-        comentarioList= new ArrayList<>();
+    private void initiateExpander() {
+
+        ArrayList<String> parentList = new ArrayList<>();
+        ArrayList<ArrayList> childListHolder = new ArrayList<>();
+
+        parentList.add("Fruits & Vegetables");
+        parentList.add("Beverages & Health");
+        parentList.add("Home & Kitchen");
+        parentList.add("saludos prueba");
+
+
+        ArrayList<String> childList = new ArrayList<>();
+        childList.add("Apple");
+        childList.add("Mango");
+        childList.add("Banana");
+
+        childListHolder.add(childList);
+
+        childList = new ArrayList<>();
+        childList.add("Red bull");
+        childList.add("Maa");
+        childList.add("Horlicks");
+
+        childListHolder.add(childList);
+
+        childList = new ArrayList<>();
+        childList.add("Knife");
+        childList.add("Vessels");
+        childList.add("Spoons");
+
+        childListHolder.add(childList);
+
+        childList = new ArrayList<>();
+        childList.add("hola");
+
+
+        childListHolder.add(childList);
+
+        ComentarioProAdapter expandableCategoryRecyclerViewAdapter =
+                new ComentarioProAdapter(getApplicationContext(), parentList,
+                        childListHolder);
+
+        expanderRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        expanderRecyclerView.setAdapter(expandableCategoryRecyclerViewAdapter);
+    }
+//    Dialog myDialog;
+//    DatabaseReference mRootReference;
+//    List<Comentario> comentarioList;
+//    ComentarioProAdapter comentarioProAdapter;
+//    RecyclerView recyclerView;
+//    DatabaseReference reference;
+//    String titulof ;
+//    String fechaf ;
+//    String autorf ;
+//    String categoriaf ;
+//    String descripcionf;
+//    FirebaseUser fuser;
+//    String autorA;
+//    DatabaseReference referenceActualU;
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_foro);
+//        myDialog = new Dialog(this);
+//        recyclerView=findViewById(R.id.recycler_viewComent);
+//        recyclerView.setNestedScrollingEnabled(false);
 //
-        mRootReference = FirebaseDatabase.getInstance().getReference();
-        comentarioProAdapter = new ComentarioProAdapter(comentarioList);
-        recyclerView=findViewById(R.id.recycler_viewComent);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(ForoProjectActivity.this));
-
-        comentarioList =new ArrayList<>();
-        readComentario();
-        referenceActualU.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user =dataSnapshot.getValue(User.class);
-                autorA= user.getUsername();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
-    }
-    private void getIncomingIntent(){
-
-
-        if(getIntent().hasExtra("titulo") && getIntent().hasExtra("descripcion")
-        && getIntent().hasExtra("fecha") && getIntent().hasExtra("autor") &&
-                getIntent().hasExtra("categoria")){
-
-             titulof = getIntent().getStringExtra("titulo");
-            descripcionf = getIntent().getStringExtra("descripcion");
-            fechaf = getIntent().getStringExtra("fecha");
-            autorf = getIntent().getStringExtra("autor");
-            categoriaf = getIntent().getStringExtra("categoria");
-            setForo(titulof,descripcionf,fechaf,autorf,categoriaf);
-        }
-    }
-    private void setForo(String titulof, String descripcionf,String fechaf, String autorf, String categoriaf){
-
-        TextView fecha = (TextView) findViewById(R.id.fecha);
-        fecha.setText("Publicado :" +fechaf);
-        TextView categoria = (TextView) findViewById(R.id.categoria);
-        categoria.setText("Tematica: "+categoriaf);
-        TextView autor = (TextView) findViewById(R.id.Autor);
-        autor.setText("Autor: "+autorf);
-        TextView titulo = (TextView) findViewById(R.id.tituloforo);
-        titulo.setText(titulof);
-        TextView descripcion = (TextView) findViewById(R.id.descripcionforo);
-        descripcion.setMovementMethod(new ScrollingMovementMethod());
-        descripcion.setText(descripcionf);
-
-//        ImageView image = findViewById(R.id.image);
-//        Glide.with(this)
-//                .asBitmap()
-//                .load(imageUrl)
-//                .into(image);
-    }
-
-    private void readComentario() {
-
-        final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Comentario");
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                comentarioList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Comentario comentario = snapshot.getValue(Comentario.class);
-                    assert comentario != null;
-                        comentarioList.add(comentario);
-                }
-                comentarioProAdapter = new ComentarioProAdapter(ForoProjectActivity.this, comentarioList);
-                recyclerView.setAdapter(comentarioProAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
+//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
+//        linearLayoutManager.setStackFromEnd(true);
+//        recyclerView.setLayoutManager(linearLayoutManager);
+//        getIncomingIntent();
+//        fuser = FirebaseAuth.getInstance().getCurrentUser();
+//        referenceActualU = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+//
+//
+//        comentarioList= new ArrayList<>();
+////
+//        mRootReference = FirebaseDatabase.getInstance().getReference();
+//        comentarioProAdapter = new ComentarioProAdapter(comentarioList);
+//        recyclerView=findViewById(R.id.recycler_viewComent);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(ForoProjectActivity.this));
+//
+//        comentarioList =new ArrayList<>();
+//        initiateExpander();
+//        referenceActualU.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                User user =dataSnapshot.getValue(User.class);
+//                autorA= user.getUsername();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//
+//
+//
+//    }
+//    private void getIncomingIntent(){
+//
+//
+//        if(getIntent().hasExtra("titulo") && getIntent().hasExtra("descripcion")
+//        && getIntent().hasExtra("fecha") && getIntent().hasExtra("autor") &&
+//                getIntent().hasExtra("categoria")){
+//
+//             titulof = getIntent().getStringExtra("titulo");
+//            descripcionf = getIntent().getStringExtra("descripcion");
+//            fechaf = getIntent().getStringExtra("fecha");
+//            autorf = getIntent().getStringExtra("autor");
+//            categoriaf = getIntent().getStringExtra("categoria");
+//            setForo(titulof,descripcionf,fechaf,autorf,categoriaf);
+//        }
+//    }
+//    private void setForo(String titulof, String descripcionf,String fechaf, String autorf, String categoriaf){
+//
+//        TextView fecha = (TextView) findViewById(R.id.fecha);
+//        fecha.setText("Publicado :" +fechaf);
+//        TextView categoria = (TextView) findViewById(R.id.categoria);
+//        categoria.setText("Tematica: "+categoriaf);
+//        TextView autor = (TextView) findViewById(R.id.Autor);
+//        autor.setText("Autor: "+autorf);
+//        TextView titulo = (TextView) findViewById(R.id.tituloforo);
+//        titulo.setText(titulof);
+//        TextView descripcion = (TextView) findViewById(R.id.descripcionforo);
+//        descripcion.setMovementMethod(new ScrollingMovementMethod());
+//        descripcion.setText(descripcionf);
+//
+////        ImageView image = findViewById(R.id.image);
+////        Glide.with(this)
+////                .asBitmap()
+////                .load(imageUrl)
+////                .into(image);
+//    }
+//
+//    private void readComentario() {
+//
+//        final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Comentario");
+//
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                comentarioList.clear();
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    Comentario comentario = snapshot.getValue(Comentario.class);
+//                    assert comentario != null;
+//                        comentarioList.add(comentario);
+//                }
+//               // comentarioProAdapter = new ComentarioProAdapter(ForoProjectActivity.this, comentarioList);
+//                recyclerView.setAdapter(comentarioProAdapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+//    private void initiateExpander() {
+//
+//        ArrayList<String> parentList = new ArrayList<>();
+//        ArrayList<ArrayList> childListHolder = new ArrayList<>();
+//
+//        parentList.add("Fruits & Vegetables");
+//        parentList.add("Beverages & Health");
+//        parentList.add("Home & Kitchen");
+//
+//        ArrayList<String> childList = new ArrayList<>();
+//        childList.add("Apple");
+//        childList.add("Mango");
+//        childList.add("Banana");
+//
+//        childListHolder.add(childList);
+//
+//        childList = new ArrayList<>();
+//        childList.add("Red bull");
+//
+//
 
 
     public void ShowPopup(View v) {
