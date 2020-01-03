@@ -57,12 +57,7 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        activity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ActivitiesActivity.class));
-            }
-        });
+
 
         group.setOnClickListener(new View.OnClickListener() {
             @Override

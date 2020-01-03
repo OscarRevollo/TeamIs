@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CrearForoActivity">
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+
+                    android:baselineAligned="false"
+                    android:foregroundGravity="center"
+                    android:tint="#26646D"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/ic_library_add_black_24dp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/crear_foro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="REGISTRAR FORO"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="30dp">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="93dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tituloAnuncio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:textSize="25dp"
+                         android:backgroundTint="#09292E"
+                        android:text="Titulo"></TextView>
+
+                    <TextView
+                        android:id="@+id/descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textSize="17dp"
+                        android:backgroundTint="#09292E"
+                        android:text="Descripcion"></TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/editTitulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="1"
+                        android:inputType="textPersonName"
+                        android:hint="Titulo del foro" />
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp">
+                        <EditText
+                            android:id="@+id/editDescripcion"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:scrollbars="vertical"
+                            android:lines="5"
+                            android:ems="1"
+                            android:inputType="textMultiLine"
+                            android:hint="Descripcion del foro" />
+                    </ScrollView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/grupoRadio">
+
+                    <RadioButton
+                        android:id="@+id/btnProyecto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Proyecto"
+                        android:textColor="@color/azul"
+                        android:textStyle="bold|italic"
+                        android:textSize="18dp"
+                        android:paddingStart="7dp"
+                        android:checked="true"/>
+                    <RadioButton
+                        android:id="@+id/btnActividad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Actividad"
+                        android:textColor="@color/azul"
+                        android:textStyle="bold|italic"
+                        android:textSize="18dp"
+                        android:paddingStart="7dp"/>
+                    <RadioButton
+                        android:id="@+id/btnGrupo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Grupo"
+                        android:textColor="@color/azul"
+                        android:textStyle="bold|italic"
+                        android:textSize="18dp"
+                        android:paddingStart="7dp"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tematicalabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tematica"
+                    android:textStyle="bold"
+                    android:backgroundTint="#09292E"
+                    android:textSize="20dp"></TextView>
+
+                <Spinner
+                    android:id="@+id/spinnertematica"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/buttonRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/margen"
+                android:onClick="onClick"
+                android:text="Registrar"
+                android:textSize="20dp"
+                android:textColor="#79C5D1"/>
+
+            <Button
+                android:id="@+id/buttonCancelar"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/margen2"
+                android:onClick="onClickCancelar"
+                android:text="Cancelar" />
+        </LinearLayout>
+
+
+
+</ScrollView>

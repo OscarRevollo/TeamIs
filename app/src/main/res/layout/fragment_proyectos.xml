@@ -1,10 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MisForosActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.MisProyectosFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,6 +27,7 @@
             </TextView>
         </RelativeLayout>
         <LinearLayout
+            android:id="@+id/opciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -66,15 +69,16 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/android_card_view"
+                        android:id="@+id/movil_card_view"
                         android:layout_width="100dp"
                         android:layout_height="100dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
+                                android:layout_width="59dp"
+                                android:layout_height="64dp"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/android"
                                 app:cardCornerRadius="16dp">
@@ -88,7 +92,7 @@
                                 android:layout_alignParentBottom="true"
                                 android:layout_centerInParent="true"
                                 android:fontFamily="sans-serif-condensed"
-                                android:text="ANDROID"
+                                android:text="MOVIL"
                                 android:textColor="@android:color/black"
                                 android:textSize="20sp" />
 
@@ -102,15 +106,19 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                android:layout_centerInParent="true"
+                                android:layout_width="62dp"
+                                android:layout_height="70dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_marginBottom="15dp"
                                 android:src="@drawable/database"
-                                app:cardCornerRadius="16dp">
+                                app:cardCornerRadius="0dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
-
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -126,17 +134,52 @@
 
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/desktop_card_view"
+                        android:id="@+id/gamers_card_view"
                         android:layout_width="100dp"
                         android:layout_height="100dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
+                                android:layout_width="88dp"
+                                android:layout_height="65dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="13dp"
+                                android:layout_marginEnd="0dp"
+                                android:src="@drawable/gamers"
+                                app:cardCornerRadius="16dp">
+
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/des"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="GAMERS"
+                                android:textColor="@android:color/black"
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/redes_card_view"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="55dp"
+                                android:layout_height="67dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/redes"
                                 app:cardCornerRadius="16dp">
 
                             </de.hdodenhof.circleimageview.CircleImageView>
@@ -147,8 +190,39 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
                                 android:layout_centerInParent="true"
-                                android:fontFamily="sans-serif-condensed"
-                                android:text="DESKTOP"
+                                android:fontFamily="sans    -serif-condensed"
+                                android:text="REDES"
+                                android:textColor="@android:color/black"
+                                android:textSize="20sp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/ia_card_view"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="59dp"
+                                android:layout_height="60dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ia"
+                                app:cardCornerRadius="16dp">
+
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="sans    -serif-condensed"
+                                android:text="IA"
                                 android:textColor="@android:color/black"
                                 android:textSize="20sp" />
 
@@ -162,9 +236,10 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
+                                android:layout_width="44dp"
+                                android:layout_height="71dp"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/otros"
                                 app:cardCornerRadius="16dp">
@@ -189,82 +264,13 @@
             </HorizontalScrollView>
 
         </LinearLayout>
-
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/foro_card_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_margin="8dp"
-                    android:backgroundTint="@color/colorCard"
-                    android:layout_marginTop="12dp"
-                    app:cardCornerRadius="8dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_margin="6dp">
-
-                        <TextView
-                            android:id="@+id/fecha"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="Fecha: "
-                            android:textColor="@android:color/white"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:id="@+id/Autor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="Autor: "
-                            android:textColor="@android:color/white"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:id="@+id/titulo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="Titulo: "
-                            android:textColor="@android:color/white"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:id="@+id/descripcion"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="Descripcion: "
-                            android:textColor="@android:color/white"
-                            android:textSize="20sp" />
-
-
-
-                    </LinearLayout>
-
-
-                </androidx.cardview.widget.CardView>
-            </ScrollView>
-
-        </LinearLayout>
-
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
+</FrameLayout>
 
-</RelativeLayout>
+
+

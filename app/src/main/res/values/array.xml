@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="Categoria">
+    <string-array name="tematicaProyecto">
         <item>Programacion Movil</item>
         <item>Programacion Web</item>
         <item>Bases de Datos</item>
         <item>Gamers</item>
         <item>Redes</item>
         <item>Inteligencia Artificial</item>
+        <item>Otros</item>
+    </string-array>
+    <string-array name="tematicaActividad">
+        <item>Juego</item>
+        <item>Academico</item>
+        <item>Deporte</item>
+        <item>Otros</item>
+    </string-array>
+    <string-array name="tematicaGrupo">
+        <item>Materia</item>
+        <item>Area de Interes</item>
         <item>Otros</item>
     </string-array>
 </resources>
