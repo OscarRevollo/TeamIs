@@ -16,10 +16,6 @@
             android:label="Foros"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActividadesActivity"
-            android:label="Actividades"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Mis_ActividadesActivity"
             android:label="Mis Actividades"
             android:screenOrientation="portrait" />
