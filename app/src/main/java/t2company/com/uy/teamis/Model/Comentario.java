@@ -1,50 +1,49 @@
 package t2company.com.uy.teamis.Model;
 
 public class Comentario {
-    String titulo;
-    String autorOriginal;
-    String emisorComentario;
+    String id;
+    String Usuario;
     String comentario;
 
-    public Comentario(String titulo, String autorOriginal, String emisorComentario, String comentario) {
-        this.titulo = titulo;
-        this.autorOriginal = autorOriginal;
-        this.emisorComentario = emisorComentario;
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    String key;
+    public Comentario() {
+    }
+
+    public Comentario(String id, String usuario, String comentario) {
+        this.id = id;
+        Usuario = usuario;
         this.comentario = comentario;
     }
 
-    public Comentario( ){
+    public String getId() {
+        return id;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public void setAutorOriginal(String autorOriginal) {
-        this.autorOriginal = autorOriginal;
-    }
-
-    public void setEmisorComentario(String emisorComentario) {
-        this.emisorComentario = emisorComentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public String getAutorOriginal() {
-        return autorOriginal;
-    }
-
-    public String getEmisorComentario() {
-        return emisorComentario;
+    public String getUsuario() {
+        return Usuario;
     }
 
     public String getComentario() {
         return comentario;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setUsuario(String usuario) {
+        Usuario = usuario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

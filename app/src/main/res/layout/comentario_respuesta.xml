@@ -61,26 +61,7 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:textColor="@color/white"
-            android:text="Re: Titulo"
-            android:textSize="15dp"
-            android:id="@+id/titulo">
-        </TextView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:textColor="@color/white"
-            android:text="De: usuario"
-            android:textSize="15dp"
-            android:id="@+id/emisor">
-        </TextView>
-
-        <TextView
-            android:id="@+id/comentario"
+            android:id="@+id/comentarioRespuesta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"

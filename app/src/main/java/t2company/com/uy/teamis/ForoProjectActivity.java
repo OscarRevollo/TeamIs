@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -31,16 +32,18 @@ import java.util.List;
 import java.util.Map;
 
 import t2company.com.uy.teamis.Adapter.ComentarioProAdapter;
-import t2company.com.uy.teamis.Adapter.ExpandableComentarioAdapter;
+import t2company.com.uy.teamis.Adapter.ForosProjectAdapter;
 import t2company.com.uy.teamis.Model.Comentario;
+import t2company.com.uy.teamis.Model.Foro;
 import t2company.com.uy.teamis.Model.User;
+import t2company.com.uy.teamis.Model.Respuesta;
 
 public class ForoProjectActivity extends AppCompatActivity {
 
     RecyclerView expanderRecyclerView;
     Dialog myDialog;
     DatabaseReference mRootReference;
-    List<Comentario> comentarioList;
+    ArrayList<Comentario> comentarioList;
     ComentarioProAdapter comentarioProAdapter;
     RecyclerView recyclerView;
     DatabaseReference reference;
@@ -50,206 +53,113 @@ public class ForoProjectActivity extends AppCompatActivity {
     String categoriaf ;
     String descripcionf;
     FirebaseUser fuser;
+
+    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase2;
     String autorA;
     DatabaseReference referenceActualU;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_foro);
+        comentarioList=new ArrayList<>();
+        myDialog = new Dialog(this);
+        recyclerView=findViewById(R.id.recycler_viewComent);
+        recyclerView.setNestedScrollingEnabled(false);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setStackFromEnd(true);
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+        referenceActualU = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+        referenceActualU.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user =dataSnapshot.getValue(User.class);
+                autorA= user.getUsername();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        ArrayList<Respuesta> childListHolder = new ArrayList<>();
+
 
         expanderRecyclerView = findViewById(R.id.recycler_viewComent);
-
-        initiateExpander();
-
-    }
-
-
-    private void initiateExpander() {
-
-        ArrayList<String> parentList = new ArrayList<>();
-        ArrayList<ArrayList> childListHolder = new ArrayList<>();
-
-        parentList.add("Fruits & Vegetables");
-        parentList.add("Beverages & Health");
-        parentList.add("Home & Kitchen");
-        parentList.add("saludos prueba");
-
-
-        ArrayList<String> childList = new ArrayList<>();
-        childList.add("Apple");
-        childList.add("Mango");
-        childList.add("Banana");
-
-        childListHolder.add(childList);
-
-        childList = new ArrayList<>();
-        childList.add("Red bull");
-        childList.add("Maa");
-        childList.add("Horlicks");
-
-        childListHolder.add(childList);
-
-        childList = new ArrayList<>();
-        childList.add("Knife");
-        childList.add("Vessels");
-        childList.add("Spoons");
-
-        childListHolder.add(childList);
-
-        childList = new ArrayList<>();
-        childList.add("hola");
-
-
-        childListHolder.add(childList);
-
-        ComentarioProAdapter expandableCategoryRecyclerViewAdapter =
-                new ComentarioProAdapter(getApplicationContext(), parentList,
-                        childListHolder);
-
+        comentarioProAdapter =new ComentarioProAdapter(getApplicationContext(), comentarioList);
         expanderRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        Query q = mDatabase.child("Comentario").orderByChild("id").equalTo("-Lx-BhwcU9TcTTdAb36p");
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                comentarioList.clear();
+                for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
+                    Comentario comentario = datasnapshot.getValue(Comentario.class);
+                    comentario.setKey(datasnapshot.getKey());
+                    comentarioList.add(comentario);
+                }
 
-        expanderRecyclerView.setAdapter(expandableCategoryRecyclerViewAdapter);
+                comentarioProAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+
+       expanderRecyclerView.setAdapter(comentarioProAdapter);
     }
-//    Dialog myDialog;
-//    DatabaseReference mRootReference;
-//    List<Comentario> comentarioList;
-//    ComentarioProAdapter comentarioProAdapter;
-//    RecyclerView recyclerView;
-//    DatabaseReference reference;
-//    String titulof ;
-//    String fechaf ;
-//    String autorf ;
-//    String categoriaf ;
-//    String descripcionf;
-//    FirebaseUser fuser;
-//    String autorA;
-//    DatabaseReference referenceActualU;
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_foro);
-//        myDialog = new Dialog(this);
-//        recyclerView=findViewById(R.id.recycler_viewComent);
-//        recyclerView.setNestedScrollingEnabled(false);
+
+    private void respuesta(String key) {
 //
-//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
-//        linearLayoutManager.setStackFromEnd(true);
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//        getIncomingIntent();
-//        fuser = FirebaseAuth.getInstance().getCurrentUser();
-//        referenceActualU = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
-//
-//
-//        comentarioList= new ArrayList<>();
-////
-//        mRootReference = FirebaseDatabase.getInstance().getReference();
-//        comentarioProAdapter = new ComentarioProAdapter(comentarioList);
-//        recyclerView=findViewById(R.id.recycler_viewComent);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(ForoProjectActivity.this));
-//
-//        comentarioList =new ArrayList<>();
-//        initiateExpander();
-//        referenceActualU.addValueEventListener(new ValueEventListener() {
+//        mDatabase2 = FirebaseDatabase.getInstance().getReference();
+//        Query q = mDatabase2.child("Respuesta").orderByChild("id").equalTo(key);
+//        q.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                User user =dataSnapshot.getValue(User.class);
-//                autorA= user.getUsername();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//
-//
-//
-//    }
-//    private void getIncomingIntent(){
-//
-//
-//        if(getIntent().hasExtra("titulo") && getIntent().hasExtra("descripcion")
-//        && getIntent().hasExtra("fecha") && getIntent().hasExtra("autor") &&
-//                getIntent().hasExtra("categoria")){
-//
-//             titulof = getIntent().getStringExtra("titulo");
-//            descripcionf = getIntent().getStringExtra("descripcion");
-//            fechaf = getIntent().getStringExtra("fecha");
-//            autorf = getIntent().getStringExtra("autor");
-//            categoriaf = getIntent().getStringExtra("categoria");
-//            setForo(titulof,descripcionf,fechaf,autorf,categoriaf);
-//        }
-//    }
-//    private void setForo(String titulof, String descripcionf,String fechaf, String autorf, String categoriaf){
-//
-//        TextView fecha = (TextView) findViewById(R.id.fecha);
-//        fecha.setText("Publicado :" +fechaf);
-//        TextView categoria = (TextView) findViewById(R.id.categoria);
-//        categoria.setText("Tematica: "+categoriaf);
-//        TextView autor = (TextView) findViewById(R.id.Autor);
-//        autor.setText("Autor: "+autorf);
-//        TextView titulo = (TextView) findViewById(R.id.tituloforo);
-//        titulo.setText(titulof);
-//        TextView descripcion = (TextView) findViewById(R.id.descripcionforo);
-//        descripcion.setMovementMethod(new ScrollingMovementMethod());
-//        descripcion.setText(descripcionf);
-//
-////        ImageView image = findViewById(R.id.image);
-////        Glide.with(this)
-////                .asBitmap()
-////                .load(imageUrl)
-////                .into(image);
-//    }
-//
-//    private void readComentario() {
-//
-//        final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Comentario");
-//
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                comentarioList.clear();
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    Comentario comentario = snapshot.getValue(Comentario.class);
-//                    assert comentario != null;
-//                        comentarioList.add(comentario);
+//                ArrayList<Respuesta> res=new ArrayList<>();
+//                for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
+//                    Respuesta respuesta = datasnapshot.getValue(Respuesta.class);
+//                    res.add(respuesta);
+//                    Log.i("keygen",respuesta.getComentario());
 //                }
-//               // comentarioProAdapter = new ComentarioProAdapter(ForoProjectActivity.this, comentarioList);
-//                recyclerView.setAdapter(comentarioProAdapter);
+//                respuestaList.add(res);
+//
 //            }
 //
 //            @Override
 //            public void onCancelled(@NonNull DatabaseError databaseError) {
 //
 //            }
+//
 //        });
-//    }
-//    private void initiateExpander() {
-//
-//        ArrayList<String> parentList = new ArrayList<>();
-//        ArrayList<ArrayList> childListHolder = new ArrayList<>();
-//
-//        parentList.add("Fruits & Vegetables");
-//        parentList.add("Beverages & Health");
-//        parentList.add("Home & Kitchen");
-//
-//        ArrayList<String> childList = new ArrayList<>();
-//        childList.add("Apple");
-//        childList.add("Mango");
-//        childList.add("Banana");
-//
-//        childListHolder.add(childList);
-//
-//        childList = new ArrayList<>();
-//        childList.add("Red bull");
-//
-//
+
+    }
+
+    private User userData(String idUser) {
+        final User[] usuario = new User[1];
+        Query q = reference.child("Users").orderByChild("id").equalTo(idUser);
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
+                    usuario[0] = datasnapshot.getValue(User.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+        return usuario[0];
+    }
+
 
 
     public void ShowPopup(View v) {

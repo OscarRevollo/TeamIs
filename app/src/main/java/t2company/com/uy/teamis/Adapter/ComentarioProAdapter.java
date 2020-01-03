@@ -1,6 +1,7 @@
 package t2company.com.uy.teamis.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,29 +14,31 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import t2company.com.uy.teamis.Model.Comentario;
 
+import t2company.com.uy.teamis.Model.Respuesta;
 import t2company.com.uy.teamis.R;
 
 
 public class ComentarioProAdapter extends RecyclerView.Adapter<ComentarioProAdapter.ViewHolder> {
 
-
-
-
-
-    ArrayList<String> nameList = new ArrayList<String>();
+    ArrayList<Comentario> nameList = new ArrayList<>();
     ArrayList<String> image = new ArrayList<String>();
     ArrayList<Integer> counter = new ArrayList<Integer>();
-    ArrayList<ArrayList> itemNameList = new ArrayList<ArrayList>();
+    ArrayList<ArrayList<Respuesta>> itemNameList = new ArrayList<ArrayList<Respuesta>>();
     Context context;
-
-    public ComentarioProAdapter(Context context,
-                                         ArrayList<String> nameList,
-                                         ArrayList<ArrayList> itemNameList) {
+    private DatabaseReference mDatabase;
+    public ComentarioProAdapter(Context context, ArrayList<Comentario> nameList) {
         this.nameList = nameList;
         this.itemNameList = itemNameList;
         this.context = context;
@@ -44,11 +47,32 @@ public class ComentarioProAdapter extends RecyclerView.Adapter<ComentarioProAdap
         for (int i = 0; i < nameList.size(); i++) {
             counter.add(0);
         }
+        Log.i("respuestaTAmaño",nameList.size()+"");
 
+    }
+    private ArrayList<Respuesta> respuesta(String key, final ArrayList<Respuesta> res) {
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        Query q = mDatabase.child("Respuesta").orderByChild("id").equalTo(key);
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot datasnapshot : dataSnapshot.getChildren()){
+                    Respuesta respuesta = datasnapshot.getValue(Respuesta.class);
+                    res.add(respuesta);
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+return  res;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
+        TextView name,comentario;
         ImageButton dropBtn;
         RecyclerView cardRecyclerView;
         CardView cardView;
@@ -56,6 +80,7 @@ public class ComentarioProAdapter extends RecyclerView.Adapter<ComentarioProAdap
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.autor_or);
+            comentario= itemView.findViewById(R.id.comentario);
             dropBtn = itemView.findViewById(R.id.categoryExpandBtn);
             cardRecyclerView = itemView.findViewById(R.id.innerRecyclerView);
             cardView = itemView.findViewById(R.id.foro_card_view);
@@ -75,11 +100,11 @@ public class ComentarioProAdapter extends RecyclerView.Adapter<ComentarioProAdap
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.name.setText(nameList.get(position));
-
-        ExpandableComentarioAdapter itemInnerRecyclerView = new ExpandableComentarioAdapter(itemNameList.get(position));
-
-
+        Comentario com=nameList.get(position);
+        holder.name.setText(com.getUsuario());
+        holder.comentario.setText(com.getComentario());
+        ArrayList<Respuesta> res=new ArrayList<>();
+        ExpandableComentarioAdapter itemInnerRecyclerView = new ExpandableComentarioAdapter(respuesta(com.getKey(),res));
         holder.cardRecyclerView.setLayoutManager(new GridLayoutManager(context, 1));
 
 
@@ -87,15 +112,11 @@ public class ComentarioProAdapter extends RecyclerView.Adapter<ComentarioProAdap
             @Override
             public void onClick(View view) {
 
-                if (counter.get(position) % 2 == 0) {
-                    holder.cardRecyclerView.setVisibility(View.VISIBLE);
-                } else {
+                if (holder.cardRecyclerView.getVisibility()==View.VISIBLE) {
                     holder.cardRecyclerView.setVisibility(View.GONE);
+                } else {
+                    holder.cardRecyclerView.setVisibility(View.VISIBLE);
                 }
-
-                counter.set(position, counter.get(position) + 1);
-
-
             }
         });
         holder.cardRecyclerView.setAdapter(itemInnerRecyclerView);
@@ -107,118 +128,6 @@ public class ComentarioProAdapter extends RecyclerView.Adapter<ComentarioProAdap
         return nameList.size();
     }
 
-
-
-
-    /*private List <Comentario> comentarioList;
-    private Context mContext;
-    ArrayList<Integer> counter = new ArrayList<Integer>();
-    ArrayList<ArrayList> itemNameList = new ArrayList<ArrayList>();
-
-    public ComentarioProAdapter(List<Comentario> comentario){
-
-        this.comentarioList=comentario;
-        ArrayList<String> nameList = new ArrayList<>();
-
-
-        nameList.add("Fruits & Vegetables");
-        nameList.add("Beverages & Health");
-        nameList.add("Home & Kitchen");
-        for (int i = 0; i < nameList.size(); i++) {
-            counter.add(0);
-        }
-
-    }
-
-
-
-
-    public ComentarioProAdapter(Context mContext, List<Comentario> comentarioList){
-        this.mContext=mContext;
-        this.comentarioList=comentarioList;
-    }
-
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.comentario_item,parent,false);
-        return new ComentarioProAdapter.ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-
-        ArrayList<String> childList = new ArrayList<>();
-        childList.add("Apple");
-        childList.add("Mango");
-        childList.add("Banana");
-
-        itemNameList.add(childList);
-
-        childList = new ArrayList<>();
-        childList.add("Red bull");
-        childList.add("Maa");
-        childList.add("Horlicks");
-
-        itemNameList.add(childList);
-
-        childList = new ArrayList<>();
-        childList.add("Knife");
-        childList.add("Vessels");
-        childList.add("Spoons");
-
-        itemNameList.add(childList);
-
-        final Comentario comentario =comentarioList.get(position);
-        holder.textViewComentario.setText("Comentario:" + comentario.getComentario());
-        holder.textViewAutor.setText("Autor: "+comentario.getAutorOriginal());
-        holder.textViewtitulo.setText("Titulo: "+comentario.getTitulo());
-        holder.textViewEmisor.setText("Emisor: "+comentario.getEmisorComentario());
-        ExpandableComentarioAdapter itemInnerRecyclerView = new ExpandableComentarioAdapter(itemNameList.get(position));
-        holder.cardRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (counter.get(position) % 2 == 0) {
-                    holder.cardRecyclerView.setVisibility(View.VISIBLE);
-                } else {
-                    holder.cardRecyclerView.setVisibility(View.GONE);
-                }
-
-                counter.set(position, counter.get(position) + 1);
-
-
-            }
-        });
-        holder.cardRecyclerView.setAdapter(itemInnerRecyclerView);
-    }
-
-    @Override
-    public int getItemCount() {
-        return comentarioList.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-
-        public TextView textViewtitulo,textViewAutor,textViewComentario,textViewEmisor;
-        public LinearLayout parentLayout;
-        CardView cardView;
-        RecyclerView cardRecyclerView;
-        public ViewHolder(View itemView){
-            super(itemView);
-
-            textViewtitulo=(TextView)itemView.findViewById(R.id.titulo);
-            textViewAutor=(TextView) itemView.findViewById(R.id.autor_or);
-            textViewComentario=(TextView) itemView.findViewById(R.id.comentario);
-            textViewEmisor=(TextView) itemView.findViewById(R.id.emisor);
-            parentLayout = itemView.findViewById(R.id.parent_layout);
-            cardView = itemView.findViewById(R.id.foro_card_view);
-            cardRecyclerView = itemView.findViewById(R.id.innerRecyclerView);
-        }
-
-    }*/
 
 }
 
