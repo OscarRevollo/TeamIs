@@ -11,22 +11,25 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+
+import t2company.com.uy.teamis.Model.Respuesta;
 import t2company.com.uy.teamis.R;
 
 public class ExpandableComentarioAdapter extends RecyclerView.Adapter<ExpandableComentarioAdapter.ViewHolder> {
-    public ArrayList<String> nameList = new ArrayList<String>();
+    public ArrayList<Respuesta> nameList = new ArrayList<Respuesta>();
 
-    public ExpandableComentarioAdapter(ArrayList<String> nameList) {
+    public ExpandableComentarioAdapter(ArrayList<Respuesta> nameList) {
 
         this.nameList = nameList;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
+        TextView name,comentario;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.itemTextView);
+            comentario = itemView.findViewById(R.id.comentarioRespuesta);
         }
     }
 
@@ -44,7 +47,8 @@ public class ExpandableComentarioAdapter extends RecyclerView.Adapter<Expandable
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.name.setText(nameList.get(position));
+        holder.name.setText(nameList.get(position).getUsuario());
+        holder.comentario.setText(nameList.get(position).getComentario());
 
     }
 

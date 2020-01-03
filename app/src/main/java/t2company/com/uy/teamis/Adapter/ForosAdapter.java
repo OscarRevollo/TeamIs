@@ -73,6 +73,8 @@ public class ForosAdapter extends RecyclerView.Adapter<ForosAdapter.ViewHolder> 
                 intent.putExtra("fecha",foro.getFecha());
                 intent.putExtra("autor",foro.getAutor());
                 intent.putExtra("tematica",foro.getTematica());
+                intent.putExtra("key",foro.getKey());
+                intent.putExtra("categoria",foro.getCategoria());
 
 
                 view.getContext().startActivity(intent);

@@ -15,17 +15,17 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/chat_card_view"
         android:layout_width="match_parent"
-        android:layout_height="103dp"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardElevation="6dp"
-        android:backgroundTint="#FFC107"
+        android:backgroundTint="#673AB7"
         app:cardCornerRadius="8dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:orientation="vertical">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="8dp"
+          android:orientation="vertical">
 
             <TextView
                 android:id="@+id/fecha"
@@ -59,27 +59,15 @@
                 android:textColor="#ffffff"
                 android:padding="1dp"
                 android:textSize="20sp" />
-        </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
 
-      <androidx.cardview.widget.CardView
-          android:id="@+id/anuncio_card_view"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="5dp"
-          android:layout_marginTop="5dp"
-          android:layout_marginEnd="5dp"
-          android:layout_marginBottom="3dp"
-          android:backgroundTint="#FF4CAF50"
-          app:cardCornerRadius="8dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_margin="0dp"
+            android:background="@android:color/darker_gray" />
 
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:paddingTop="5dp"
-              android:padding="8dp">
+
               <TextView
                   android:id="@+id/tituloforo"
                   android:layout_width="match_parent"
@@ -111,12 +99,11 @@
             android:padding="15dp"
             android:layout_alignParentRight="true"
             android:shadowColor="@android:color/transparent"
-            android:text="Responder" />
+            android:text="Comentar" />
 
 </RelativeLayout>
 
-
-          </LinearLayout>
+  </LinearLayout>
       </androidx.cardview.widget.CardView>
 
       <RelativeLayout

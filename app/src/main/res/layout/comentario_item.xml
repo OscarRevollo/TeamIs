@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_margin="8dp"
             android:orientation="vertical">
             <RelativeLayout
                 android:orientation="vertical"
@@ -49,7 +49,6 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shapelogin"
-                    android:onClick="ShowPopup"
                     android:padding="15dp"
                     android:layout_alignParentRight="true"
                     android:shadowColor="@android:color/transparent"
@@ -74,25 +73,6 @@
                 android:layout_height="3dp"
                 android:layout_margin="0dp"
                 android:background="@android:color/darker_gray" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:textColor="@color/white"
-                android:text="Re: Titulo"
-                android:textSize="15dp"
-                android:id="@+id/titulo">
-            </TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:textColor="@color/white"
-                android:text="De: usuario"
-                android:textSize="15dp"
-                android:id="@+id/emisor">
-            </TextView>
 
             <TextView
                 android:id="@+id/comentario"
@@ -123,6 +103,7 @@
                     android:id="@+id/categoryExpandBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#2196F3"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" />
