@@ -25,7 +25,7 @@
                     android:id="@+id/Crear_anuncio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="REGISTRAR ANUNCIO"
+                    android:text="REGISTRAR FORO"
                     android:gravity="center">
 
                 </TextView>
@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:ems="1"
                         android:inputType="textPersonName"
-                        android:hint="Titulo de tu anuncio" />
+                        android:hint="Titulo del foro" />
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="100dp">
@@ -78,7 +78,7 @@
                             android:lines="5"
                             android:ems="1"
                             android:inputType="textMultiLine"
-                            android:hint="Descripcion de anuncio" />
+                            android:hint="Descripcion del foro" />
                     </ScrollView>
 
                 </LinearLayout>
@@ -89,23 +89,67 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="8dp">
-
-                <TextView
-                    android:id="@+id/estadoCategoria"
+                <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Categoria"
+                    android:orientation="horizontal"
+                    android:id="@+id/grupoRadio">
+
+                    <RadioButton
+                        android:id="@+id/btnProyecto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Proyecto"
+                        android:textColor="@color/azul"
+                        android:textStyle="bold|italic"
+                        android:textSize="18dp"
+                        android:paddingStart="7dp"
+                        android:checked="true"/>
+                    <RadioButton
+                        android:id="@+id/btnActividad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Actividad"
+                        android:textColor="@color/azul"
+                        android:textStyle="bold|italic"
+                        android:textSize="18dp"
+                        android:paddingStart="7dp"/>
+                    <RadioButton
+                        android:id="@+id/btnGrupo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Grupo"
+                        android:textColor="@color/azul"
+                        android:textStyle="bold|italic"
+                        android:textSize="18dp"
+                        android:paddingStart="7dp"/>
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tematicalabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tematica"
                     ></TextView>
 
                 <Spinner
-                    android:id="@+id/spinnerCrear"
+                    android:id="@+id/spinnertematica"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     />
 
-
             </LinearLayout>
+
+
+
+
             <Button
                 android:id="@+id/buttonRegistrar"
                 android:layout_width="100dp"

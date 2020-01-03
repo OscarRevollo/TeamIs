@@ -3,12 +3,16 @@ package t2company.com.uy.teamis;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import t2company.com.uy.teamis.Adapter.ForosProjectAdapter;
+import t2company.com.uy.teamis.Fragments.ActividadesFragment;
+import t2company.com.uy.teamis.Fragments.GruposFragment;
+import t2company.com.uy.teamis.Fragments.ProyectosFragment;
 import t2company.com.uy.teamis.Model.Foro;
 
 public class forosGeneralActivity extends AppCompatActivity {
@@ -37,12 +44,12 @@ public class forosGeneralActivity extends AppCompatActivity {
     List<Foro> foroList;
     RecyclerView recyclerView;
     FirebaseUser fuser;
-
+    BottomNavigationView bottomNav;
     private DatabaseReference nDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anuncios);
+        setContentView(R.layout.activity_foros_general);
         web = findViewById(R.id.web_card_view);
         movil = findViewById(R.id.movil_card_view);
         bd = findViewById(R.id.bd_card_view);
@@ -56,10 +63,34 @@ public class forosGeneralActivity extends AppCompatActivity {
         foroList= new ArrayList<>();
         forosProjectAdapter =new ForosProjectAdapter(foroList);
         recyclerView.setAdapter(forosProjectAdapter);
+        bottomNav = (BottomNavigationView)findViewById(R.id.bottom_nav);
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         nDatabase = FirebaseDatabase.getInstance().getReference();
-//        nDatabase.child("Foro").addValueEventListener(new ValueEventListener() {
+        //BottomNav abajo
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                if (menuItem.getItemId()==R.id.proyecto_icon) {
+                    showSelectedFragment(new ProyectosFragment());
+                }
+                if (menuItem.getItemId()==R.id.Actividad_icon) {
+                    showSelectedFragment(new ActividadesFragment());
+                }
+                if (menuItem.getItemId()==R.id.Grupo_icon) {
+                    showSelectedFragment(new GruposFragment());
+                }
+
+
+
+
+                return true;
+            }
+        });
+        //BottomNav arriba
+
+
         web.setOnClickListener(new View.OnClickListener() {
                                    @Override
                                    public void onClick(View view) {
@@ -222,40 +253,14 @@ public class forosGeneralActivity extends AppCompatActivity {
             }
         });
     }
+    //Metodo para visualizar fragment
+    void showSelectedFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+    }
 }
 
 
-//        nDatabase.child("Foro").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                foroList.removeAll(foroList);
-//                for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
-//                    Foro foro = datasnapshot.getValue(Foro.class);
-//                    foroList.add(foro);
-//                }
-//                forosProjectAdapter.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
-
-
-
-//            if (v.getId() == movil.getId()) {
-//                Toast toast1 =
-//                        Toast.makeText(getApplicationContext(),
-//                                "Android", Toast.LENGTH_SHORT);
-//
-//                toast1.show();
-//            }
-
-
-//
 
 

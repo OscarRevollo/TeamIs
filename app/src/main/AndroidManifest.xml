@@ -24,10 +24,6 @@
             android:label="Mis Actividades"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Crear_ActividadActivity"
-            android:label="Crear Actividad"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ForoProjectActivity"
             android:label="@string/title_activity_foro"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -41,10 +37,6 @@
         <activity
             android:name=".GroupActivity"
             android:label="Grupos"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ActivitiesActivity"
-            android:label="Actividades"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ProjectActivity"

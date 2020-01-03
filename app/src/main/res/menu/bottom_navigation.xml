@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/proyecto_icon"
+        android:title="Proyectos"
+        android:icon="@drawable/ic_laptop_mac_black_24dp"/>
+    <item
+        android:id="@+id/Actividad_icon"
+        android:title="Actividades"
+        android:icon="@drawable/baseline_sports_handball_24"/>
+    <item
+        android:id="@+id/Grupo_icon"
+        android:title="Grupos"
+        android:icon="@drawable/baseline_group_24"/>
+
+
+</menu>
