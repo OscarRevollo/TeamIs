@@ -178,7 +178,8 @@
                             android:layout_centerInParent="true"
                             android:layout_marginTop="30dp"
                             android:layout_marginStart="32dp"
-                            app:srcCompat="@drawable/ic_chat_black_24dp" />
+
+                            app:srcCompat="@drawable/ic_forum_white" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

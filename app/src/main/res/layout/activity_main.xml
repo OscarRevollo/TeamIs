@@ -54,6 +54,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+
                         android:layout_alignParentTop="true"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="55dp"
@@ -66,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerInParent="true"
-                        android:layout_marginBottom="65dp"
+                        android:layout_marginBottom="60dp"
                         android:fontFamily="sans-serif-condensed"
                         android:text="Chat"
                         android:textColor="@android:color/white"
@@ -172,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerInParent="true"
-                        android:layout_marginBottom="65dp"
+                        android:layout_marginBottom="60dp"
                         android:fontFamily="sans-serif-condensed"
                         android:text="Informaciones"
                         android:textColor="@android:color/white"
