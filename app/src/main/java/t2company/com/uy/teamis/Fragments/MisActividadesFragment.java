@@ -26,24 +26,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import t2company.com.uy.teamis.Adapter.ForosAdapter;
+import t2company.com.uy.teamis.Adapter.MisForosAdapter;
 import t2company.com.uy.teamis.Model.Foro;
+import t2company.com.uy.teamis.Model.User;
 import t2company.com.uy.teamis.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MisActividadesFragment extends Fragment {
-
+    String username;
     CardView juego;
     CardView academico;
     CardView deporte;
     CardView otro;
     View vista;
-    ForosAdapter forosAdapter;
+    MisForosAdapter forosAdapter;
     List<Foro> foroList;
     RecyclerView recyclerView;
     FirebaseUser fuser;
     private DatabaseReference nDatabase;
+    DatabaseReference reference;
 
     public MisActividadesFragment() {
         // Required empty public constructor
@@ -59,11 +62,11 @@ public class MisActividadesFragment extends Fragment {
         deporte = vista.findViewById(R.id.deporte_card_view);
         academico=vista.findViewById(R.id.academico_card_view);
         otro = vista.findViewById(R.id.otro_card_view);
-        recyclerView= (RecyclerView) vista.findViewById(R.id.recycler_view);
+        recyclerView= (RecyclerView) vista.findViewById(R.id.recycler_view1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         foroList= new ArrayList<>();
-        forosAdapter =new ForosAdapter(foroList);
+        forosAdapter =new MisForosAdapter(foroList);
         recyclerView.setAdapter(forosAdapter);
         nDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -71,7 +74,22 @@ public class MisActividadesFragment extends Fragment {
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         //si quieres obtener id del usuario es :  fuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
 
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                User user =dataSnapshot.getValue(User.class);
+                username= user.getUsername();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         LlenarLista();
 
         return vista;
@@ -88,7 +106,9 @@ public class MisActividadesFragment extends Fragment {
                         foroList.removeAll(foroList);
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Foro foro = datasnapshot.getValue(Foro.class);
-                            foroList.add(foro);
+                            if(foro.getAutor().equals(username)){
+                                foroList.add(foro);
+                            }
                         }
                         forosAdapter.notifyDataSetChanged();
                     }
@@ -111,7 +131,9 @@ public class MisActividadesFragment extends Fragment {
                         foroList.removeAll(foroList);
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Foro foro = datasnapshot.getValue(Foro.class);
-                            foroList.add(foro);
+                            if(foro.getAutor().equals(username)){
+                                foroList.add(foro);
+                            }
                         }
                         forosAdapter.notifyDataSetChanged();
                     }
@@ -134,7 +156,9 @@ public class MisActividadesFragment extends Fragment {
                         foroList.removeAll(foroList);
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Foro foro = datasnapshot.getValue(Foro.class);
-                            foroList.add(foro);
+                            if(foro.getAutor().equals(username)){
+                                foroList.add(foro);
+                            }
                         }
                         forosAdapter.notifyDataSetChanged();
                     }
@@ -158,7 +182,9 @@ public class MisActividadesFragment extends Fragment {
                         foroList.removeAll(foroList);
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Foro foro = datasnapshot.getValue(Foro.class);
-                            foroList.add(foro);
+                            if(foro.getAutor().equals(username)){
+                                foroList.add(foro);
+                            }
                         }
                         forosAdapter.notifyDataSetChanged();
                     }
