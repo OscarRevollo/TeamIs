@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class RegistrarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText username,email,password;
@@ -76,13 +78,23 @@ public class RegistrarActivity extends AppCompatActivity implements AdapterView.
                     Toast.makeText(RegistrarActivity.this,"Contraseña muy corta" , Toast.LENGTH_SHORT).show();
 
                 }else {
-                    mDialog.setMessage("Espere un momento...");
-                    mDialog.setCanceledOnTouchOutside(false);
-                    mDialog.show();
-                    register(txt_username,txt_email, txt_password);
+                    if(!validarEmail(txt_email)){
+                        email.setError("Por favor ingrese un correo valido");
+                        email.requestFocus();
+                    }else {
+                        mDialog.setMessage("Espere un momento...");
+                        mDialog.setCanceledOnTouchOutside(false);
+                        mDialog.show();
+                        register(txt_username, txt_email, txt_password);
+                    }
                 }
             }
         });
+    }
+    private boolean validarEmail(String email){
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
+
     }
     private void register(final String username, final String email, String password){
 

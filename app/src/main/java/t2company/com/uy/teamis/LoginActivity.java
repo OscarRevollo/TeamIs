@@ -3,6 +3,7 @@ package t2company.com.uy.teamis;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Pattern;
+
 
 public class LoginActivity extends AppCompatActivity {
     EditText emailid,password;
@@ -26,6 +29,11 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog mDialog;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
+    private boolean validarEmail(String email){
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = emailid.getText().toString();
                 String pwd = password.getText().toString();
-                if(email.isEmpty()){
+                if(email.isEmpty() || !validarEmail(email)){
                     emailid.setError("Por favor ingrese un correo valido");
                     emailid.requestFocus();
                 }
