@@ -31,9 +31,9 @@
             android:name=".ForoProjectActivity"
             android:label="@string/title_activity_foro"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ResetPasswordActivity" /> <!-- <activity android:name=".AnunciosActivity"></activity> -->
-        <!-- <activity android:name=".MisAnunciosActivity" /> -->
-        <!-- <activity android:name=".CrearAnuncioActivity" /> -->
+        <activity android:name=".ResetPasswordActivity" /> <!-- <activity android:name=".forosGeneralActivity"></activity> -->
+        <!-- <activity android:name=".MisForosActivity" /> -->
+        <!-- <activity android:name=".CrearForoActivity" /> -->
         <activity
             android:name=".ComplainsActivity"
             android:label="Reclamos"
@@ -81,16 +81,16 @@
             android:label="Iniciar sesión"
             android:parentActivityName=".StartActivity" />
         <activity
-            android:name=".CrearAnuncioActivity"
-            android:label="Crear Proyecto"
+            android:name=".CrearForoActivity"
+            android:label="Crear Foro"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MisAnunciosActivity"
-            android:label="Mis Proyectos"
+            android:name=".MisForosActivity"
+            android:label="Mis Foros"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AnunciosActivity"
-            android:label="Proyectos"
+            android:name=".forosGeneralActivity"
+            android:label="Foros"
             android:screenOrientation="portrait" />
         <activity
             android:name=".CrearGrupoActivity"

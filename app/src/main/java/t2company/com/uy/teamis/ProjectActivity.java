@@ -1,7 +1,6 @@
 package t2company.com.uy.teamis;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,19 +31,19 @@ public class ProjectActivity extends AppCompatActivity {
         crear_anuncio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),CrearAnuncioActivity.class));
+                startActivity(new Intent(getApplicationContext(), CrearForoActivity.class));
             }
         });
         mis_anuncios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MisAnunciosActivity.class));
+                startActivity(new Intent(getApplicationContext(), MisForosActivity.class));
             }
         });
         anuncios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),AnunciosActivity.class));
+                startActivity(new Intent(getApplicationContext(), forosGeneralActivity.class));
             }
         });
 

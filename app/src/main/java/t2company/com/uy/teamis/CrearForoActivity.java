@@ -29,7 +29,7 @@ import java.text.DateFormat;
 
 import t2company.com.uy.teamis.Model.User;
 
-public class CrearAnuncioActivity extends AppCompatActivity {
+public class CrearForoActivity extends AppCompatActivity {
     DatabaseReference mRootReference;
     TextView estado;
     EditText tituloo;
@@ -116,7 +116,7 @@ public class CrearAnuncioActivity extends AppCompatActivity {
 
 
         mRootReference.child("Foro").push().setValue(datosForo);
-      startActivity(new Intent(getApplicationContext(), AnunciosActivity.class));
+      startActivity(new Intent(getApplicationContext(), forosGeneralActivity.class));
     }
 
     public void onClickCancelar(View view) {
