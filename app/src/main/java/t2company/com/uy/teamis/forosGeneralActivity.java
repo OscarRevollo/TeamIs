@@ -24,7 +24,7 @@ import java.util.List;
 import t2company.com.uy.teamis.Adapter.ForosProjectAdapter;
 import t2company.com.uy.teamis.Model.Foro;
 
-public class AnunciosActivity extends AppCompatActivity {
+public class forosGeneralActivity extends AppCompatActivity {
 
     CardView web;
     CardView movil;
@@ -52,7 +52,7 @@ public class AnunciosActivity extends AppCompatActivity {
         otro = findViewById(R.id.otro_card_view);
         recyclerView=findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(AnunciosActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(forosGeneralActivity.this));
         foroList= new ArrayList<>();
         forosProjectAdapter =new ForosProjectAdapter(foroList);
         recyclerView.setAdapter(forosProjectAdapter);
