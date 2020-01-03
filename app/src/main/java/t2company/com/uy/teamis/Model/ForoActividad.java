@@ -1,7 +1,7 @@
 package t2company.com.uy.teamis.Model;
 
 public class ForoActividad {
-
+    private String key;
     private String titulo;
     private String descripcion;
     private String categoria;
@@ -16,6 +16,14 @@ public class ForoActividad {
     }
 
     public ForoActividad() {
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
     }
 
     public String getTitulo() {
