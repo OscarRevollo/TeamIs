@@ -1,100 +1,205 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ForosActivity">
+    tools:context=".ForosActivity"
+    android:weightSum="5">
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#25E4DBDB">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="3"
             >
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
                 >
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="¿olvidaste tu contraseña?"
-                    android:drawableLeft="@drawable/ic_lock_open_black_24dp"
-                    android:shadowColor="@android:color/transparent"
-                    android:padding="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/shapesignup"
-                    android:textColor="@color/white"
-                    android:layout_weight="1"
-                    android:id="@+id/crear_foro"/>
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="2"
+                    android:backgroundTint="#119AAD"
+                    app:cardCornerRadius="30dp"
+                    android:id="@+id/crear_foro"
+                    >
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorBackground" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/margen">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/ic_library_add_black_24dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginBottom="30dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Crear Foro"
+                            android:textColor="@android:color/white"
+                            android:textSize="32sp" />
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
 
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="¿olvidaste tu contraseña?"
-                    android:drawableLeft="@drawable/ic_lock_open_black_24dp"
-                    android:shadowColor="@android:color/transparent"
-                    android:padding="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/shapesignup"
-                    android:textColor="@color/white"
-                    android:layout_weight="1"
-                    android:id="@+id/mis_foros"/>
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="2"
+                    android:backgroundTint="#119AAD"
+                    app:cardCornerRadius="30dp"
+                    android:id="@+id/mis_foros">
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorBackground" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/margen1">
+
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/ic_playlist_add_check_black_24dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginBottom="30dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Mis Foros"
+                            android:textColor="@android:color/white"
+                            android:textSize="35sp" />
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
 
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="¿olvidaste tu contraseña?"
-                    android:drawableLeft="@drawable/ic_lock_open_black_24dp"
-                    android:shadowColor="@android:color/transparent"
-                    android:padding="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@drawable/shapesignup"
-                    android:textColor="@color/white"
-                    android:layout_weight="1"
-                    android:id="@+id/foros"/>
+                <androidx.cardview.widget.CardView
 
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="100dp"
+                    android:layout_weight="2"
+                    android:backgroundTint="#119AAD"
+                    app:cardCornerRadius="30dp"
+                    android:id="@+id/foros">
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorBackground" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/margen2">
+
+
+                    <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginStart="32dp"
+                            app:srcCompat="@drawable/ic_chat_black_24dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginBottom="30dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Foros"
+                            android:textColor="@android:color/white"
+                            android:textSize="32sp" />
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
 
 
             </LinearLayout>
 
 
         </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>
