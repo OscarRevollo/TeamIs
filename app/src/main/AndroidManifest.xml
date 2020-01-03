@@ -15,6 +15,15 @@
         <activity android:name=".ForosActivity"
             android:label="Foros"
             android:screenOrientation="portrait" />
+        <activity android:name=".AdminActivity"
+            android:label="Administrador"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CentroActivity"
+            android:label="Centro"
+            android:screenOrientation="portrait" />
+        <activity android:name=".NuevosActivity"
+            android:label="Nuevos"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActividadesActivity"
             android:label="Actividades"
@@ -36,7 +45,7 @@
         <!-- <activity android:name=".CrearAnuncioActivity" /> -->
         <activity
             android:name=".ComplainsActivity"
-            android:label="Reclamos"
+            android:label="Informaciones"
             android:screenOrientation="portrait" />
         <activity
             android:name=".GroupActivity"

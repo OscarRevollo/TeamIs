@@ -32,7 +32,7 @@
                     android:layout_height="42dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="32dp"
-                    android:src="@drawable/ic_library_add_black_24dp" />
+                    app:srcCompat="@drawable/ic_library_add_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                     android:layout_height="55dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="32dp"
-                    android:src="@drawable/ic_playlist_add_check_black_24dp" />
+                    app:srcCompat="@drawable/ic_playlist_add_check_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
                     android:layout_height="42dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="32dp"
-                    android:src="@drawable/ic_forum_black_24dp" />
+                    app:srcCompat="@drawable/ic_forum_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
