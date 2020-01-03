@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.MisProyectosFragment">
+    tools:context=".Fragments.ActividadesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:context=".MisForosActivity">
+        android:fitsSystemWindows="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,12 +49,13 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
+
                                 <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="42dp"
-                                    android:layout_height="42dp"
+                                    android:layout_width="65dp"
+                                    android:layout_height="58dp"
                                     android:layout_centerInParent="true"
-                                    android:src="@drawable/baseline_work_24"
-                                    android:background="@color/colorPrimary">
+
+                                    android:src="@drawable/iconju">
 
                                 </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -81,12 +80,13 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
+
                                 <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="42dp"
-                                    android:layout_height="42dp"
+                                    android:layout_width="62dp"
+                                    android:layout_height="57dp"
                                     android:layout_centerInParent="true"
-                                    android:src="@drawable/android"
-                                    app:cardCornerRadius="16dp">
+                                    android:src="@drawable/materias"
+                                    app:cardCornerRadius="10dp">
 
                                 </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -111,12 +111,13 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
+
                                 <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="42dp"
-                                    android:layout_height="42dp"
+                                    android:layout_width="54dp"
+                                    android:layout_height="52dp"
                                     android:layout_centerInParent="true"
-                                    android:src="@drawable/database"
-                                    app:cardCornerRadius="16dp">
+                                    android:src="@drawable/deporte"
+                                    app:cardCornerRadius="10dp">
 
                                 </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -145,8 +146,8 @@
                                     android:layout_width="42dp"
                                     android:layout_height="42dp"
                                     android:layout_centerInParent="true"
-                                    android:src="@drawable/des"
-                                    app:cardCornerRadius="16dp">
+                                    android:src="@drawable/otros"
+                                    app:cardCornerRadius="10dp">
 
                                 </de.hdodenhof.circleimageview.CircleImageView>
 

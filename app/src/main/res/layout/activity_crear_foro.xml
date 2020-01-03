@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CrearForoActivity">
 
 
@@ -15,6 +15,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+
+                    android:baselineAligned="false"
+                    android:foregroundGravity="center"
+                    android:tint="#26646D"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/ic_library_add_black_24dp" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -22,11 +39,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/Crear_anuncio"
+                    android:id="@+id/crear_foro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="REGISTRAR FORO"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="30dp">
 
                 </TextView>
             </LinearLayout>
@@ -45,6 +64,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:textSize="25dp"
+                         android:backgroundTint="#09292E"
                         android:text="Titulo"></TextView>
 
                     <TextView
@@ -52,6 +73,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:textSize="17dp"
+                        android:backgroundTint="#09292E"
                         android:text="Descripcion"></TextView>
 
                 </LinearLayout>
@@ -125,46 +148,54 @@
                         android:paddingStart="7dp"/>
                 </RadioGroup>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tematicalabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tematica"
-                    ></TextView>
+                    android:textStyle="bold"
+                    android:backgroundTint="#09292E"
+                    android:textSize="20dp"></TextView>
 
                 <Spinner
                     android:id="@+id/spinnertematica"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    />
+                    android:layout_marginTop="8dp" />
 
             </LinearLayout>
 
 
-
-
             <Button
                 android:id="@+id/buttonRegistrar"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Registrar"
                 android:layout_gravity="center"
-                android:onClick="onClick"/>
+                android:layout_marginTop="15dp"
+                android:background="@drawable/margen"
+                android:onClick="onClick"
+                android:text="Registrar"
+                android:textSize="20dp"
+                android:textColor="#79C5D1"/>
+
             <Button
                 android:id="@+id/buttonCancelar"
-                android:layout_width="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:textSize="20dp"
                 android:layout_height="wrap_content"
-                android:text="Cancelar"
                 android:layout_gravity="center"
-                android:onClick="onClickCancelar"/>
+                android:background="@drawable/margen2"
+                android:onClick="onClickCancelar"
+                android:text="Cancelar" />
         </LinearLayout>
 
 

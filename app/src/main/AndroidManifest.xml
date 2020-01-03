@@ -6,42 +6,40 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="TeamIS"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".CrearEvento"
-            android:label="Crear Eventos"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".Evento"
+        <activity android:name=".EventosActivity"
             android:label="Eventos"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".EventosActivity"
-            android:label="Eventos"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ForosActivity"
-            android:label="Foros"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".AdminActivity"
-            android:label="Administrador"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".CentroActivity"
-            android:label="Centro"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".NuevosActivity"
-            android:label="Nuevos"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".Evento"
+            android:label="Evento"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".AdminActivity"
+            android:label="Administrador"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog.Alert"/>
+        <activity android:name=".CentroActivity"
+            android:label="Centro"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog"/>
+        <activity android:name=".NuevosActivity"
+            android:label="Nuevos"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog"
+            android:screenOrientation="portrait" />
+
+            <activity android:name=".CrearEvento"
+            android:label="Crear Evento"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ForosActivity"
+            android:label="Foros"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Mis_ActividadesActivity"
             android:label="Mis Actividades"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ForoProjectActivity"
             android:label="@string/title_activity_foro"
@@ -51,13 +49,12 @@
         <!-- <activity android:name=".CrearForoActivity" /> -->
         <activity
             android:name=".ComplainsActivity"
-            android:label="Informaciones"
+            android:label="Reclamos"
             android:screenOrientation="portrait" />
         <activity
             android:name=".GroupActivity"
             android:label="Grupos"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ProjectActivity"
             android:label="Proyectos"
@@ -116,6 +113,8 @@
             android:name=".GruposActivity"
             android:label="Actividades"
             android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>
