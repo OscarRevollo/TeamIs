@@ -9,19 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventosActivity"
+        <activity
+            android:name=".CrearEvento"
+            android:label="Crear Eventos"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Evento"
+            android:label="Eventos"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".EventosActivity"
             android:label="Eventos"
             android:screenOrientation="portrait" />
-        <activity android:name=".ForosActivity"
+        <activity
+            android:name=".ForosActivity"
             android:label="Foros"
             android:screenOrientation="portrait" />
-        <activity android:name=".AdminActivity"
+        <activity
+            android:name=".AdminActivity"
             android:label="Administrador"
             android:screenOrientation="portrait" />
-        <activity android:name=".CentroActivity"
+        <activity
+            android:name=".CentroActivity"
             android:label="Centro"
             android:screenOrientation="portrait" />
-        <activity android:name=".NuevosActivity"
+        <activity
+            android:name=".NuevosActivity"
             android:label="Nuevos"
             android:screenOrientation="portrait" />
         <activity
@@ -113,8 +125,6 @@
             android:name=".GruposActivity"
             android:label="Actividades"
             android:screenOrientation="portrait" />
-
-
     </application>
 
 </manifest>
