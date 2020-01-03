@@ -4,9 +4,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,11 +25,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
-public class RegistrarActivity extends AppCompatActivity {
+public class RegistrarActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText username,email,password;
     Button btn_register;
-
+    Spinner spinner;
+    String carreraItem;
     FirebaseAuth auth;
     private ProgressDialog mDialog;
     DatabaseReference reference;
@@ -33,6 +39,23 @@ public class RegistrarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
+        spinner = (Spinner) findViewById(R.id.spinner);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                R.layout.custom_spinner,
+                getResources().getStringArray(R.array.carrera)
+        );
+        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
+
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
+
+
+
+
 
         username = findViewById(R.id.username);
         email = findViewById(R.id.emailLogin);
@@ -55,16 +78,25 @@ public class RegistrarActivity extends AppCompatActivity {
                     Toast.makeText(RegistrarActivity.this,"Contraseña muy corta" , Toast.LENGTH_SHORT).show();
 
                 }else {
-                    mDialog.setMessage("Espere un momento...");
-                    mDialog.setCanceledOnTouchOutside(false);
-                    mDialog.show();
-                    register(txt_username,txt_email, txt_password);
+                    if(!validarEmail(txt_email)){
+                        email.setError("Por favor ingrese un correo valido");
+                        email.requestFocus();
+                    }else {
+                        mDialog.setMessage("Espere un momento...");
+                        mDialog.setCanceledOnTouchOutside(false);
+                        mDialog.show();
+                        register(txt_username, txt_email, txt_password);
+                    }
                 }
             }
         });
+    }
+    private boolean validarEmail(String email){
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
 
     }
-    private void register(final String username, String email, String password){
+    private void register(final String username, final String email, String password){
 
         auth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>(){
@@ -79,8 +111,10 @@ public class RegistrarActivity extends AppCompatActivity {
 
                             HashMap<String,String> hashMap = new HashMap<>();
                             hashMap.put("id",userid);
+                            hashMap.put("email",email);
                             hashMap.put("username", username);
                             hashMap.put("imageUrl","default");
+                            hashMap.put("carrera",carreraItem);
                             hashMap.put("status","offline");
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -101,6 +135,18 @@ public class RegistrarActivity extends AppCompatActivity {
                         mDialog.dismiss();
                     }
                 });
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        carreraItem= parent.getItemAtPosition(position).toString();
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

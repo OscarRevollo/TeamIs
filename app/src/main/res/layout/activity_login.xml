@@ -9,8 +9,6 @@
     android:padding="20dp"
     tools:context=".LoginActivity">
 
-
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
