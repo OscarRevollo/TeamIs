@@ -47,7 +47,7 @@ public class ComentarioProAdapter extends RecyclerView.Adapter<ComentarioProAdap
         for (int i = 0; i < nameList.size(); i++) {
             counter.add(0);
         }
-        Log.i("respuestaTAmaño",nameList.size()+"");
+
 
     }
     private ArrayList<Respuesta> respuesta(String key, final ArrayList<Respuesta> res) {

@@ -1,7 +1,7 @@
 package t2company.com.uy.teamis.Model;
 
 public class Foro {
-
+    private String key;
     private String titulo;
     private String descripcion;
     private String categoria;
@@ -55,5 +55,13 @@ public class Foro {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
     }
 }

@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -47,10 +48,12 @@ public class ForoProjectActivity extends AppCompatActivity {
     ComentarioProAdapter comentarioProAdapter;
     RecyclerView recyclerView;
     DatabaseReference reference;
+    String id;
     String titulof ;
     String fechaf ;
     String autorf ;
     String categoriaf ;
+    String key;
     String descripcionf;
     FirebaseUser fuser;
 
@@ -62,6 +65,7 @@ public class ForoProjectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_foro);
+        getIncomingIntent();
         comentarioList=new ArrayList<>();
         myDialog = new Dialog(this);
         recyclerView=findViewById(R.id.recycler_viewComent);
@@ -90,7 +94,8 @@ public class ForoProjectActivity extends AppCompatActivity {
         comentarioProAdapter =new ComentarioProAdapter(getApplicationContext(), comentarioList);
         expanderRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        Query q = mDatabase.child("Comentario").orderByChild("id").equalTo("-Lx-BhwcU9TcTTdAb36p");
+
+        Query q = mDatabase.child("Comentario").orderByChild("id").equalTo(key);
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -99,6 +104,7 @@ public class ForoProjectActivity extends AppCompatActivity {
                     Comentario comentario = datasnapshot.getValue(Comentario.class);
                     comentario.setKey(datasnapshot.getKey());
                     comentarioList.add(comentario);
+
                 }
 
                 comentarioProAdapter.notifyDataSetChanged();
@@ -113,54 +119,6 @@ public class ForoProjectActivity extends AppCompatActivity {
 
        expanderRecyclerView.setAdapter(comentarioProAdapter);
     }
-
-    private void respuesta(String key) {
-//
-//        mDatabase2 = FirebaseDatabase.getInstance().getReference();
-//        Query q = mDatabase2.child("Respuesta").orderByChild("id").equalTo(key);
-//        q.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                ArrayList<Respuesta> res=new ArrayList<>();
-//                for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
-//                    Respuesta respuesta = datasnapshot.getValue(Respuesta.class);
-//                    res.add(respuesta);
-//                    Log.i("keygen",respuesta.getComentario());
-//                }
-//                respuestaList.add(res);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//
-//        });
-
-    }
-
-    private User userData(String idUser) {
-        final User[] usuario = new User[1];
-        Query q = reference.child("Users").orderByChild("id").equalTo(idUser);
-        q.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
-                    usuario[0] = datasnapshot.getValue(User.class);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-
-        });
-        return usuario[0];
-    }
-
-
 
     public void ShowPopup(View v) {
         TextView txtclose;
@@ -197,6 +155,41 @@ public class ForoProjectActivity extends AppCompatActivity {
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
+    }
+    private void getIncomingIntent(){
+
+
+        if(getIntent().hasExtra("titulo") && getIntent().hasExtra("descripcion")
+                && getIntent().hasExtra("fecha") && getIntent().hasExtra("autor")
+                && getIntent().hasExtra("key")&& getIntent().hasExtra("categoria")){
+
+            titulof = getIntent().getStringExtra("titulo");
+            descripcionf = getIntent().getStringExtra("descripcion");
+            fechaf = getIntent().getStringExtra("fecha");
+            autorf = getIntent().getStringExtra("autor");
+            key = getIntent().getStringExtra("key");
+            categoriaf = getIntent().getStringExtra("categoria");
+            setForo(titulof,descripcionf,fechaf,autorf,categoriaf);
+        }
+    }
+    private void setForo(String titulof, String descripcionf,String fechaf, String autorf, String categoriaf){
+
+        TextView fecha = (TextView) findViewById(R.id.fecha);
+        fecha.setText("Publicado :" +fechaf);
+        TextView categoria = (TextView) findViewById(R.id.categoria);
+        categoria.setText("Tematica: "+categoriaf);
+        TextView autor = (TextView) findViewById(R.id.Autor);
+        autor.setText("Autor: "+autorf);
+        TextView titulo = (TextView) findViewById(R.id.tituloforo);
+        titulo.setText(titulof);
+        TextView descripcion = (TextView) findViewById(R.id.descripcionforo);
+        descripcion.setText(descripcionf);
+
+//        ImageView image = findViewById(R.id.image);
+//        Glide.with(this)
+//                .asBitmap()
+//                .load(imageUrl)
+//                .into(image);
     }
     private void cargarDatosFirebase( String titulo,String AutorOriginal,String comentario, String emisorComentario) {
         Map<String, Object> datosComentario = new HashMap<>();

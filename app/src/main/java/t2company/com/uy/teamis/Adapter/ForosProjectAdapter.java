@@ -75,6 +75,7 @@ public class ForosProjectAdapter extends RecyclerView.Adapter<ForosProjectAdapte
                 intent.putExtra("descripcion",foro.getDescripcion());
                 intent.putExtra("fecha",foro.getFecha());
                 intent.putExtra("autor",foro.getAutor());
+                intent.putExtra("key",foro.getKey());
                 intent.putExtra("categoria",foro.getCategoria());
 
 
