@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CrearEvento">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+
+                android:baselineAligned="false"
+                android:foregroundGravity="center"
+                android:tint="#26646D"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/create_new" />
+        </RelativeLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Crear_anuncio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="CREAR EVENTO"
+                android:textStyle="bold"
+                android:textColor="#1C494E"
+                android:textSize="30dp">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="93dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tituloAnuncio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Titulo"
+                    android:textColor="#2E575C"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/descripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Descripcion"
+                    android:textColor="#1C3033"
+                    android:textSize="15dp"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="1"
+                    android:hint="Titulo del evento"
+                    android:inputType="textPersonName" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <EditText
+                        android:id="@+id/editDescripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:ems="1"
+                        android:hint="Descripcion de evento"
+                        android:inputType="textMultiLine"
+                        android:lines="5"
+                        android:scrollbars="vertical" />
+                </ScrollView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/estadoCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                android:textColor="#2D4F53"
+                android:textSize="20dp"></TextView>
+
+            <Spinner
+                android:id="@+id/spinnerCrear"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Registrar"
+            android:textColor="#F1EBEB"
+            android:textSize="20dp"
+            android:backgroundTint="#1E5057"
+            android:background="@drawable/margen_eventos"
+            />
+        <!--            android:onClick="onClick"/>-->
+        <Button
+            android:layout_marginTop="5dp"
+            android:id="@+id/buttonCancelar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cancelar"
+            android:textSize="20dp"
+            android:background="@drawable/margen_eventos"
+            android:backgroundTint="#47858D"/>
+        <!--            android:onClick="onClickCancelar"/>-->
+    </LinearLayout>
+
+
+
+</ScrollView>

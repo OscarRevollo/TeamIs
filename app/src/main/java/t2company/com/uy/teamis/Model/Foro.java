@@ -5,13 +5,18 @@ public class Foro {
     private String titulo;
     private String descripcion;
     private String categoria;
+
+
+
+    private String tematica;
     private String fecha;
     private String autor;
 
-    public Foro(String titulo, String descripcion, String categoria, String fecha, String autor) {
+    public Foro(String titulo, String descripcion, String categoria,String tematica, String fecha, String autor) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
+        this.tematica = tematica;
         this.fecha = fecha;
         this.autor = autor;
     }
@@ -55,5 +60,12 @@ public class Foro {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+    public String getTematica() {
+        return tematica;
+    }
+
+    public void setTematica(String tematica) {
+        this.tematica = tematica;
     }
 }

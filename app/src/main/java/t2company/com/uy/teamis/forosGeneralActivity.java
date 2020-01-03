@@ -19,33 +19,32 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import t2company.com.uy.teamis.Adapter.ForosProjectAdapter;
+import t2company.com.uy.teamis.Adapter.ForosAdapter;
 import t2company.com.uy.teamis.Fragments.ActividadesFragment;
 import t2company.com.uy.teamis.Fragments.GruposFragment;
 import t2company.com.uy.teamis.Fragments.ProyectosFragment;
 import t2company.com.uy.teamis.Model.Foro;
 
 public class forosGeneralActivity extends AppCompatActivity {
-
-    CardView web;
-    CardView movil;
-    CardView bd;
-    CardView redes;
-    CardView ia;
-    CardView gamers;
-    CardView otro;
-    ForosProjectAdapter forosProjectAdapter;
-    List<Foro> foroList;
-    RecyclerView recyclerView;
-    FirebaseUser fuser;
+//
+//    CardView web;
+//    CardView movil;
+//    CardView bd;
+//    CardView redes;
+//    CardView ia;
+//    CardView gamers;
+//    CardView otro;
+//    ForosAdapter forosProjectAdapter;
+//    List<Foro> foroList;
+//    RecyclerView recyclerView;
+//    FirebaseUser fuser;
     BottomNavigationView bottomNav;
-    private DatabaseReference nDatabase;
+//    private DatabaseReference nDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,12 +60,12 @@ public class forosGeneralActivity extends AppCompatActivity {
 //        recyclerView.setHasFixedSize(true);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(forosGeneralActivity.this));
 //        foroList= new ArrayList<>();
-//        forosProjectAdapter =new ForosProjectAdapter(foroList);
+//        forosProjectAdapter =new ForosAdapter(foroList);
 //        recyclerView.setAdapter(forosProjectAdapter);
         bottomNav = (BottomNavigationView)findViewById(R.id.bottom_nav);
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
-
-        nDatabase = FirebaseDatabase.getInstance().getReference();
+//        fuser = FirebaseAuth.getInstance().getCurrentUser();
+//
+//        nDatabase = FirebaseDatabase.getInstance().getReference();
         //BottomNav abajo
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

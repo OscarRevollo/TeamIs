@@ -2,14 +2,11 @@ package t2company.com.uy.teamis.Adapter;
 
 
 import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,20 +16,20 @@ import t2company.com.uy.teamis.ForoProjectActivity;
 import t2company.com.uy.teamis.R;
 import t2company.com.uy.teamis.Model.Foro;
 
-public class ForosProjectAdapter extends RecyclerView.Adapter<ForosProjectAdapter.ViewHolder> {
+public class ForosAdapter extends RecyclerView.Adapter<ForosAdapter.ViewHolder> {
     // private String[] mDataset;
 //    private Context mCtx;
     private List <Foro> foroList;
 
     public class ViewHolder extends  RecyclerView.ViewHolder{
         //        public TextView mTextView;
-        TextView textViewFecha,textViewtitulo,textViewAutor,textViewDescripcion,textViewCategoria;
+        TextView textViewFecha,textViewtitulo,textViewAutor,textViewDescripcion,textViewTematica;
         LinearLayout parentLayout;
 
         public ViewHolder(View itemView){
             super(itemView);
             textViewFecha=(TextView) itemView.findViewById(R.id.fecha);
-            textViewCategoria=(TextView)itemView.findViewById(R.id.categoria);
+            textViewTematica=(TextView)itemView.findViewById(R.id.categoria);
             textViewAutor=(TextView) itemView.findViewById(R.id.Autor);
             textViewtitulo=(TextView) itemView.findViewById(R.id.titulo);
             textViewDescripcion=(TextView) itemView.findViewById(R.id.descripcion);
@@ -41,7 +38,7 @@ public class ForosProjectAdapter extends RecyclerView.Adapter<ForosProjectAdapte
 
     }
 
-    public ForosProjectAdapter(List<Foro> foro){
+    public ForosAdapter(List<Foro> foro){
 
         this.foroList=foro;
     }
@@ -62,7 +59,7 @@ public class ForosProjectAdapter extends RecyclerView.Adapter<ForosProjectAdapte
 
         final Foro foro = foroList.get(position);
         holder.textViewFecha.setText("Fecha: "+ foro.getFecha());
-        holder.textViewCategoria.setText("Categoria:" + foro.getCategoria());
+        holder.textViewTematica.setText("Tematica:" + foro.getTematica());
         holder.textViewAutor.setText("Autor: "+foro.getAutor());
         holder.textViewtitulo.setText("Titulo: "+foro.getTitulo());
         holder.textViewDescripcion.setText("Descripcion: "+foro.getDescripcion());
@@ -75,7 +72,7 @@ public class ForosProjectAdapter extends RecyclerView.Adapter<ForosProjectAdapte
                 intent.putExtra("descripcion",foro.getDescripcion());
                 intent.putExtra("fecha",foro.getFecha());
                 intent.putExtra("autor",foro.getAutor());
-                intent.putExtra("categoria",foro.getCategoria());
+                intent.putExtra("tematica",foro.getTematica());
 
 
                 view.getContext().startActivity(intent);
