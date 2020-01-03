@@ -1,7 +1,6 @@
 package t2company.com.uy.teamis;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,25 +18,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 import t2company.com.uy.teamis.Adapter.ComentarioProAdapter;
-import t2company.com.uy.teamis.Adapter.ForosProjectAdapter;
 import t2company.com.uy.teamis.Model.Comentario;
-import t2company.com.uy.teamis.Model.Foro;
 import t2company.com.uy.teamis.Model.User;
-import t2company.com.uy.teamis.Model.Respuesta;
+
 
 public class ForoProjectActivity extends AppCompatActivity {
 
@@ -56,9 +49,7 @@ public class ForoProjectActivity extends AppCompatActivity {
     String key;
     String descripcionf;
     FirebaseUser fuser;
-
     private DatabaseReference mDatabase;
-    private DatabaseReference mDatabase2;
     String autorA;
     DatabaseReference referenceActualU;
     @Override
@@ -87,11 +78,8 @@ public class ForoProjectActivity extends AppCompatActivity {
             }
         });
 
-        ArrayList<Respuesta> childListHolder = new ArrayList<>();
-
-
         expanderRecyclerView = findViewById(R.id.recycler_viewComent);
-        comentarioProAdapter =new ComentarioProAdapter(getApplicationContext(), comentarioList);
+        comentarioProAdapter =new ComentarioProAdapter(ForoProjectActivity.this, comentarioList);
         expanderRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -132,19 +120,20 @@ public class ForoProjectActivity extends AppCompatActivity {
         descrip=(EditText)myDialog.findViewById(R.id.text_send);
         txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
         txtclose.setText("X");
-        autor_o.setText(autorf);
-        titulo_o.setText(titulof);
+        autor_o.setText("De: " +autorA);
+        titulo_o.setText("Titulo: "+titulof);
         btnEnviar = (ImageButton) myDialog.findViewById(R.id.btn_send);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                String titulo = titulo_o.getText().toString();
-                String emisorComentario = autorA;
-                String AutorOriginal =autor_o.getText().toString();
+                String AutorOriginal = autorA;
                 String comentario= descrip.getText().toString();
-
-                cargarDatosFirebase(titulo, AutorOriginal, comentario,emisorComentario);
+                if (!comentario.isEmpty()) {
+                    cargarDatosFirebase(AutorOriginal, comentario);
+                }else {
+                    Toast.makeText(ForoProjectActivity.this,"Escriba un comentario" , Toast.LENGTH_SHORT).show();
+                }
             }
         });
         txtclose.setOnClickListener(new View.OnClickListener() {
@@ -181,9 +170,9 @@ public class ForoProjectActivity extends AppCompatActivity {
         TextView autor = (TextView) findViewById(R.id.Autor);
         autor.setText("Autor: "+autorf);
         TextView titulo = (TextView) findViewById(R.id.tituloforo);
-        titulo.setText(titulof);
+        titulo.setText("Titulo: "+titulof);
         TextView descripcion = (TextView) findViewById(R.id.descripcionforo);
-        descripcion.setText(descripcionf);
+        descripcion.setText("Descripción: "+descripcionf);
 
 //        ImageView image = findViewById(R.id.image);
 //        Glide.with(this)
@@ -191,17 +180,17 @@ public class ForoProjectActivity extends AppCompatActivity {
 //                .load(imageUrl)
 //                .into(image);
     }
-    private void cargarDatosFirebase( String titulo,String AutorOriginal,String comentario, String emisorComentario) {
+    private void cargarDatosFirebase( String AutorOriginal,String comentario) {
+        mRootReference=FirebaseDatabase.getInstance().getReference();
         Map<String, Object> datosComentario = new HashMap<>();
-        datosComentario.put("titulo",titulo);
-        datosComentario.put("autorOriginal",AutorOriginal);
+        datosComentario.put("usuario",AutorOriginal);
         datosComentario.put("comentario",comentario);
-        datosComentario.put("emisorComentario",emisorComentario);
-
-
+        datosComentario.put("id",key);
 
         mRootReference.child("Comentario").push().setValue(datosComentario);
-        startActivity(new Intent(getApplicationContext(), ForoProjectActivity.class));
+        myDialog.dismiss();
+        EditText descrip=(EditText) myDialog.findViewById(R.id.text_send);
+        descrip.setText("");
     }
 
 

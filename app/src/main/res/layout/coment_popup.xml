@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_margin="8dp"
-        android:backgroundTint="#5CC7CC"
+        android:backgroundTint="#2196F3"
         app:cardCornerRadius="8dp">
         //#5CC7CC color fondo #6DC7A6
         <TextView
@@ -32,18 +32,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Responder a : usuario "
+            android:textColor="@color/white"
+            android:text="Escribe un comentario"
             android:textSize="20dp"
-            android:id="@+id/autor_o">
+            android:id="@+id/titulo_o">
 
         </TextView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="@color/white"
             android:layout_marginTop="3dp"
             android:text="Re: Titulo"
             android:textSize="20dp"
-            android:id="@+id/titulo_o">
+            android:id="@+id/autor_o">
 
         </TextView>
 <!--        <EditText-->
@@ -62,7 +64,8 @@
             android:layout_height="match_parent">
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="top"
                 android:id="@+id/text_send"
                 android:background="@android:color/transparent"
                 android:hint="Escriba un comentario"
