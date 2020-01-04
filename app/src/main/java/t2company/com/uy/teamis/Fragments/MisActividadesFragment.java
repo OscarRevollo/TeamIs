@@ -106,6 +106,7 @@ public class MisActividadesFragment extends Fragment {
                         foroList.removeAll(foroList);
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Foro foro = datasnapshot.getValue(Foro.class);
+                            foro.setKey (datasnapshot.getKey());
                             if(foro.getAutor().equals(username)){
                                 foroList.add(foro);
                             }
@@ -131,6 +132,7 @@ public class MisActividadesFragment extends Fragment {
                         foroList.removeAll(foroList);
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Foro foro = datasnapshot.getValue(Foro.class);
+                            foro.setKey (datasnapshot.getKey());
                             if(foro.getAutor().equals(username)){
                                 foroList.add(foro);
                             }
@@ -156,6 +158,7 @@ public class MisActividadesFragment extends Fragment {
                         foroList.removeAll(foroList);
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Foro foro = datasnapshot.getValue(Foro.class);
+                            foro.setKey (datasnapshot.getKey());
                             if(foro.getAutor().equals(username)){
                                 foroList.add(foro);
                             }
@@ -182,6 +185,7 @@ public class MisActividadesFragment extends Fragment {
                         foroList.removeAll(foroList);
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Foro foro = datasnapshot.getValue(Foro.class);
+                            foro.setKey (datasnapshot.getKey());
                             if(foro.getAutor().equals(username)){
                                 foroList.add(foro);
                             }

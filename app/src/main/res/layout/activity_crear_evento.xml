@@ -34,21 +34,21 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/Crear_anuncio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="CREAR EVENTO"
-                android:textStyle="bold"
-                android:textColor="#1C494E"
-                android:textSize="30dp">
+        <TextView
+            android:id="@+id/Crear_anuncio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="CREAR EVENTO"
+            android:textColor="#1C494E"
+            android:textSize="30dp"
+            android:textStyle="bold">
 
-            </TextView>
-        </LinearLayout>
+        </TextView>
+    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,8 +131,43 @@
                 android:id="@+id/spinnerCrear"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="2dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
 
+            <ImageButton
+                android:id="@+id/btn_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/clock1" />
+
+                <EditText
+                    android:id="@+id/hora"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:ems="5"
+                    android:inputType="textPersonName"
+                    android:text="hora" />
+
+                <ImageButton
+                    android:id="@+id/btn_fecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/fecha" />
+                <EditText
+                    android:id="@+id/fecha"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:ems="5"
+                    android:inputType="textPersonName"
+                    android:text="fecha" />
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

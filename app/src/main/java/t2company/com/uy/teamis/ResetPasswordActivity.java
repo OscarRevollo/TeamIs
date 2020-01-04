@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
@@ -39,17 +42,21 @@ public class ResetPasswordActivity extends AppCompatActivity {
             @Override
             public  void onClick(View view){
                 email = mEditTextEmail.getText().toString();
-                if(!email.isEmpty()){
-                    mDialog.setMessage("Espere un momento...");
-                    mDialog.setCanceledOnTouchOutside(false);
-                    mDialog.show();
-                    resetPassword();
+                if(!validarEmail(email)){
+                    mEditTextEmail.setError("Por favor ingrese un correo valido");
+                    mEditTextEmail.requestFocus();
+                }else {
+                    if (!email.isEmpty()) {
+                        mDialog.setMessage("Espere un momento...");
+                        mDialog.setCanceledOnTouchOutside(false);
+                        mDialog.show();
+                        resetPassword();
 
-                }
-                else{
-                    Toast.makeText(ResetPasswordActivity.this,"Debe ingresar el email",Toast.LENGTH_SHORT).show();
-                }
+                    } else {
 
+                        Toast.makeText(ResetPasswordActivity.this, "Debe ingresar el email", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
             }
         });
@@ -71,5 +78,10 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 mDialog.dismiss();
             }
         });
+    }
+    private boolean validarEmail(String email){
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
+
     }
 }

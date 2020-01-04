@@ -2,19 +2,39 @@ package t2company.com.uy.teamis.Model;
 
 public class User {
     private String id;
+    private String carrera;
+    private String email;
     private String username;
     private String imageUrl;
     private String status;
 
-    public User(String id, String imageUrl, String username, String status){
-        this.id=id;
-        this.username=username;
-        this.imageUrl=imageUrl;
-        this.status=status;
+    public User(String id, String carrera, String email, String username, String imageUrl, String status) {
+        this.id = id;
+        this.carrera = carrera;
+        this.email = email;
+        this.username = username;
+        this.imageUrl = imageUrl;
+        this.status = status;
     }
 
     public User() {
 
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getId() {

@@ -85,8 +85,9 @@ public class GruposFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         foroList.removeAll(foroList);
-                        for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
-                            Foro foro = datasnapshot.getValue(Foro.class);
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            Foro foro = childSnapshot.getValue(Foro.class);
+                            foro.setKey(childSnapshot.getKey());
                             foroList.add(foro);
                         }
                         forosAdapter.notifyDataSetChanged();
@@ -108,8 +109,9 @@ public class GruposFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         foroList.removeAll(foroList);
-                        for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
-                            Foro foro = datasnapshot.getValue(Foro.class);
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            Foro foro = childSnapshot.getValue(Foro.class);
+                            foro.setKey(childSnapshot.getKey());
                             foroList.add(foro);
                         }
                         forosAdapter.notifyDataSetChanged();
@@ -134,8 +136,9 @@ public class GruposFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         foroList.removeAll(foroList);
-                        for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
-                            Foro foro = datasnapshot.getValue(Foro.class);
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            Foro foro = childSnapshot.getValue(Foro.class);
+                            foro.setKey(childSnapshot.getKey());
                             foroList.add(foro);
                         }
                         forosAdapter.notifyDataSetChanged();

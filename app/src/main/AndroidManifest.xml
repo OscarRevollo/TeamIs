@@ -72,6 +72,9 @@
             android:colorMode="wideColorGamut"
             android:label="Categorias" />
         <activity
+            android:name=".MensajeActivity"
+            android:colorMode="wideColorGamut" />
+        <activity
             android:name=".StartActivity"
             android:screenOrientation="portrait">
             <intent-filter>
